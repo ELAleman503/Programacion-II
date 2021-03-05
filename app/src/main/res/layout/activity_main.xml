@@ -21,7 +21,8 @@
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"/>
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
@@ -29,20 +30,57 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:id="@+id/aguas_vatos"
+                    android:id="@+id/agua"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
-                 <Button
-                     android:layout_width="match_parent"
-                     android:layout_height="match_parent"
-                     android:layout_marginTop="400dp"/>
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/suministro_de_agua"
+                        android:textAlignment="center"
+                        android:textIsSelectable="false"
+                        android:textSize="25sp" />
 
                     <TextView
                         android:id="@+id/textView"
                         android:layout_width="match_parent"
-                        android:layout_height="85dp"
-                        android:text="TextView" />
+                        android:layout_height="match_parent"
+                        android:text="@string/cantidad_de_agua"
+                        android:textAlignment="center"
+                        android:textIsSelectable="false"
+                        android:textSize="20sp"
+                        android:layout_marginTop="25dp"/>
+
+                    <EditText
+                        android:id="@+id/Cantidad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:layout_marginTop="25dp" />
+                    <TextView
+                        android:id="@+id/Resultado"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/total_a_pagar"
+                        android:textAlignment="center"
+                        android:textIsSelectable="false"
+                        android:textSize="20sp"
+                        android:layout_marginTop="20dp"/>
+
+                    <Button
+                        android:id="@+id/CALCULADOR"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="120dp"
+                        android:background="#3F51B5"
+                        android:backgroundTint="#FFFFFF"
+                        android:text="@string/calcular"
+                        android:textSize="20sp" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -50,6 +88,51 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/mostrar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textAlignment="center"
+                        android:textIsSelectable="false"
+                        android:textSize="20sp"
+                        android:layout_marginTop="20dp"/>
+                    <Spinner
+                        android:id="@+id/listado"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"/>
+                    <TextView
+                        android:id="@+id/mostrar2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/unidad_a_conversora"
+                        android:textAlignment="center"
+                        android:textIsSelectable="false"
+                        android:textSize="20sp"
+                        android:layout_marginTop="20dp"/>
+                    <Spinner
+                        android:id="@+id/listado2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"/>
+                    <TextView
+                        android:id="@+id/Resultado2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/resultado"
+                        android:textAlignment="center"
+                        android:textIsSelectable="false"
+                        android:textSize="20sp"
+                        android:layout_marginTop="20dp"/>
+                    <Button
+                        android:id="@+id/CALCULADOR2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="120dp"
+                        android:background="#3F51B5"
+                        android:backgroundTint="#FFFFFF"
+                        android:text="@string/calcular"
+                        android:textSize="20sp" />
 
                 </LinearLayout>
             </FrameLayout>

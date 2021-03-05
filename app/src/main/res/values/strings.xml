@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="cantidad">Cantidad</string>
+    <string name="calcular">CALCULAR</string>
+    <string name="total_a_pagar">TOTAL A PAGAR:</string>
+    <string name="cantidad_de_agua">CANTIDAD DE AGUA</string>
+    <string name="suministro_de_agua">SUMiNISTRO DE AGUA</string>
+    <string name="resultado">RESULTADO</string>
+    <string name="unidad_a_conversora">UNIDAD A CONVERSORA</string>
+    <string name="calcular2">CALCULAR</string>
+    <string-array name="unidades">
+        <item> "Pie Cuadrado"</item>
+        <item>"Vara Cuadrada"</item>
+     </string-array>
 </resources>
