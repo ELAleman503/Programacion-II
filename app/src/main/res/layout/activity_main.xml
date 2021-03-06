@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
     <TabHost
-        android:id="@+id/Pestañas"
+        android:id="@+id/tbhparcia_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,130 +21,116 @@
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#FFFFFF"
-                android:orientation="horizontal" />
+                android:layout_height="wrap_content" />
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <LinearLayout
-                    android:id="@+id/agua"
+                <RelativeLayout
+                    android:id="@+id/ContadorAgua"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/lbltitulo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/suministro_de_agua"
-                        android:textColor="@color/white"
+                        android:text="SUMINISTRO DE AGUA"
+                        android:textColor="@color/black"
                         android:textIsSelectable="false"
                         android:textSize="25sp" />
 
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="25dp"
-                        android:text="@string/cantidad_de_agua"
-                        android:textColor="@color/white"
-                        android:textIsSelectable="false"
-                        android:textSize="20sp" />
-
                     <EditText
-                        android:id="@+id/Cantidad"
+                        android:id="@+id/TXTcantidad"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
+                        android:layout_marginTop="50dp"
+                        android:hint="Cantidad"
                         android:ems="10"
                         android:inputType="number"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/LblRespuesta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/TXTcantidad"
+                        android:layout_marginTop="110dp"
+                        android:text="Respuesta: " />
 
                     <Button
-                        android:id="@+id/CALCULADOR"
+                        android:id="@+id/btnCalcular"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="120dp"
-                        android:background="@color/white"
-                        android:backgroundTint="#FFFFFF"
-                        android:text="@string/calcular"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        app:backgroundTint="#FFFFFF" />
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/LblRespuesta"
+                        android:layout_marginTop="34dp"
+                        android:text="Calcular"
+                        android:textColor="@color/white"/>
 
-                </LinearLayout>
+                </RelativeLayout>
 
-                <LinearLayout
-                    android:id="@+id/conversor"
+                <RelativeLayout
+                    android:id="@+id/Area"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/mostrar"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="20dp"
-                        android:textIsSelectable="false"
-                        android:textSize="20sp" />
-
+                        android:id="@+id/lblDe"
+                        android:text="De:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
                     <Spinner
-                        android:id="@+id/listado"
+
+                        android:id="@+id/cboDel"
+                        android:layout_marginLeft="40dp"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="20dp" />
+                        android:layout_height="wrap_content"/>
 
                     <TextView
-                        android:id="@+id/mostrar2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="20dp"
-                        android:text="@string/unidad_a_conversora"
-                        android:textIsSelectable="false"
-                        android:textSize="20sp" />
-
+                        android:id="@+id/lblAL"
+                        android:text="A:"
+                        android:layout_below="@id/lblDe"
+                        android:layout_marginTop="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
                     <Spinner
-                        android:id="@+id/listado2"
+                        android:id="@+id/cboA"
+                        android:layout_below="@id/cboDel"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="40dp"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="20dp" />
-
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:id="@+id/txtCantidadA"
+                        android:layout_below="@id/lblAL"
+                        android:layout_marginTop="40dp"
+                        android:hint="Cantidad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
                     <TextView
-                        android:id="@+id/Resultado2"
+                        android:id="@+id/lblRespuestaA"
+                        android:layout_below="@id/txtCantidadA"
+                        android:text="Respuesta: ?"
+                        android:layout_marginTop="40dp"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="20dp"
-                        android:text="@string/resultado"
-                        android:textIsSelectable="false"
-                        android:textSize="20sp" />
-
+                        android:layout_height="wrap_content"/>
                     <Button
-                        android:id="@+id/CALCULADOR2"
+                        android:id="@+id/btnCalcularA"
+                        android:layout_below="@id/lblRespuestaA"
+                        android:layout_marginTop="40dp"
+                        android:text="Convertir"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="120dp"
-                        android:background="#3F51B5"
-                        android:backgroundTint="#FFFFFF"
-                        android:text="@string/calcular"
-                        android:textSize="20sp" />
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
 
-                </LinearLayout>
             </FrameLayout>
+
         </LinearLayout>
     </TabHost>
-
-    <TextView
-        android:id="@+id/Resultado"
-        android:layout_width="match_parent"
-        android:layout_height="66dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/total_a_pagar"
-        android:textColor="@color/white"
-        android:textIsSelectable="false"
-        android:textSize="20sp" />
-
 </LinearLayout>
