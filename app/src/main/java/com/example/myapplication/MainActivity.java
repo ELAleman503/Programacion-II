@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     spnOpcionDe=findViewById(R.id.cboDel);
                     spnOpcionA=findViewById(R.id.cboA);
                     tempVal = findViewById(R.id.lblRespuestaA);
-                    tempVal.setText("Respuesta" + miConversor.convertir(7,spnOpcionDe.getSelectedItemPosition(),spnOpcionA.getSelectedItemPosition(),cantidad));
+                    tempVal.setText("Respuesta " + miConversor.convertir(0,spnOpcionDe.getSelectedItemPosition(),spnOpcionA.getSelectedItemPosition(),cantidad));
                 }catch(Exception e){
                     tempVal = findViewById(R.id.lblRespuestaA);
                     tempVal.setText("Por favor ingrese algun valor correspondiente");
