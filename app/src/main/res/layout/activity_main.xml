@@ -99,7 +99,8 @@
                         android:layout_below="@id/lblDe"
                         android:layout_marginTop="40dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        />
                     <Spinner
                         android:id="@+id/cboA"
                         android:layout_below="@id/cboDel"
@@ -114,7 +115,8 @@
                         android:layout_marginTop="40dp"
                         android:hint="Cantidad"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:inputType="number"/>
                     <TextView
                         android:id="@+id/lblRespuestaA"
                         android:layout_below="@id/txtCantidadA"
