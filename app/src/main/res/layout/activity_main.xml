@@ -89,6 +89,7 @@
 
                         android:id="@+id/cboDel"
                         android:layout_marginLeft="40dp"
+                        android:entries="@array/unidades"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
@@ -104,6 +105,7 @@
                         android:layout_below="@id/cboDel"
                         android:layout_marginTop="40dp"
                         android:layout_marginLeft="40dp"
+                        android:entries="@array/unidades"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                     <EditText

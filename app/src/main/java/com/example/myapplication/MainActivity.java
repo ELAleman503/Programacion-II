@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     TabHost  tbhgeneral;
     Button BotonR;
     TextView tempVal;
+    Spinner spnOpcionDe, spnOpcionA;
+    conversores miConversor = new conversores();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,5 +78,32 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        /*Calcular Area*/
+        BotonR = findViewById(R.id.btnCalcularA);
+        BotonR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    tempVal = findViewById(R.id.txtCantidadA);
+                    double cantidad= Double.parseDouble(tempVal.getText().toString());
+                    spnOpcionDe=findViewById(R.id.cboDel);
+                    spnOpcionA=findViewById(R.id.cboA);
+                    tempVal = findViewById(R.id.lblRespuestaA);
+                    tempVal.setText("Respuesta" + miConversor.convertir(7,spnOpcionDe.getSelectedItemPosition(),spnOpcionA.getSelectedItemPosition(),cantidad));
+                }catch(Exception e){
+                    tempVal = findViewById(R.id.lblRespuestaA);
+                    tempVal.setText("Por favor ingrese algun valor correspondiente");
+                    Toast.makeText(getApplicationContext(),"Por Favor ingrese algun valor" ,Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+}
+class conversores{
+    double[][] conversor = {
+            {1.0,0.1323,0.111111,0.092903,0.00014774656489,0.000013188960818,0.0000092903},/*Area*/
+    };
+    public double convertir(int opcion, int de, int a, double cantidad){
+        return conversor[opcion][a] / conversor[opcion][de] * cantidad;
     }
 }

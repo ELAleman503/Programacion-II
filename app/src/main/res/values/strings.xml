@@ -9,7 +9,13 @@
     <string name="unidad_a_conversora">UNIDAD A CONVERSORA</string>
     <string name="calcular2">CALCULAR</string>
     <string-array name="unidades">
-        <item> "Pie Cuadrado"</item>
-        <item>"Vara Cuadrada"</item>
+        <item>Pie Cuadrado</item>
+        <item>Vara Cuadrada</item>
+        <item>Yarda Cuadrada</item>
+        <item>Metro Cuadrado</item>
+        <item>Tareas</item>
+        <item>Manzana</item>
+        <item>Hectárea</item>
+
      </string-array>
 </resources>
