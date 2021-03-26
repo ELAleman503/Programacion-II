@@ -1,12 +1,20 @@
 package com.ugb.myprimerproyecto;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -21,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listaproductos;
     Cursor datosproductoscursor = null;
     ArrayList<productos> productosArrayList = new ArrayList<productos>();
+    ArrayList<productos> productosArrayListcopy = new ArrayList<productos>();
     productos misproductos;
 
     @Override
@@ -40,6 +49,83 @@ public class MainActivity extends AppCompatActivity {
            agregaproductos();
        });
     }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_productos,menu);
+
+        AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo)menuInfo;
+        datosproductoscursor.moveToPosition(adapterContextMenuInfo.position);
+        menu.setHeaderTitle(datosproductoscursor.getString(1));
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        try {
+
+            switch (item.getItemId()) {
+                case R.id.mxnAgregar:
+                    agregaproductos("nuevo", new String[]{});
+                    break;
+                case R.id.mxnModificar:
+                    String[] datos = {
+                            datosproductoscursor.getString(0),
+                            datosproductoscursor.getString(1),
+                            datosproductoscursor.getString(2),
+                            datosproductoscursor.getString(3),
+                            datosproductoscursor.getString(4),
+                            datosproductoscursor.getString(5),
+                            datosproductoscursor.getString(6)
+                    };
+                    agregaproductos("modificar", datos);
+                    break;
+                case R.id.mxnEliminar:
+
+
+                    break;
+            }
+        } catch (Exception ex) {
+            mensajes(ex.getMessage());
+        }
+        return super.onContextItemSelected(item);
+    }
+
+
+    private void buscarProductos() {
+        TextView tempVal = findViewById(R.id.txtbuscarproducto);
+        tempVal.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                productosArrayList.clear();
+                if (tempVal.getText().toString().length()<1){
+                    productosArrayList.addAll(productosArrayListcopy);
+                } else{
+                    for (productos PB : productosArrayListcopy){
+                        String nombre = PB.getDescripcion();
+                        if(nombre.toLowerCase().contains(tempVal.getText().toString().trim().toLowerCase())){
+                            productosArrayList.add(PB);
+                        }
+                    }
+                }
+                adaptadorImagenes adaptadorImagenes = new adaptadorImagenes(getApplicationContext(), productosArrayList);
+                listaproductos.setAdapter(adaptadorImagenes);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+    }
+
+
 
 
     //metodo de lanzar activity
