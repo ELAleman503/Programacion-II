@@ -21,6 +21,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
+/**
+ *  *CLASE PRINCIPAL CORRESPONDIENTE AL ACTIVITY PRINCIPAL
+ */
 
 public class MainActivity extends AppCompatActivity {
 // boton flotante

@@ -8,10 +8,10 @@
     tools:context=".agregarproductos">
 
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@android:drawable/screen_background_dark"
         android:orientation="vertical">
 
         <LinearLayout
@@ -20,74 +20,77 @@
             android:orientation="vertical">
 
 
-
-                  <ImageButton
+            <ImageButton
                 android:id="@+id/imgfotoproducto"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:layout_gravity="center"
                 android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp" />
 
-                  <EditText
+            <EditText
                 android:id="@+id/txtcodigo"
-                android:layout_below="@id/imgfotoproducto"
-                android:layout_margin="15dp"
-                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Codigo de producto"/>
+                android:layout_below="@id/imgfotoproducto"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:hint="Codigo de producto"
+                android:textColorHint="@color/white" />
 
             <EditText
                 android:id="@+id/txtdescripcion"
-                android:layout_below="@id/txtcodigo"
-                android:layout_margin="15dp"
-                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Descripcion de producto"/>
+                android:layout_below="@id/txtcodigo"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:hint="Descripcion de producto"
+                android:textColorHint="@color/white" />
 
             <EditText
                 android:id="@+id/txtmarca"
-                android:layout_below="@id/txtdescripcion"
-                android:layout_margin="15dp"
-                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Marca de producto"/>
+                android:layout_below="@id/txtdescripcion"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:hint="Marca de producto"
+                android:textColorHint="@color/white" />
 
 
             <EditText
                 android:id="@+id/txtpresentacion"
-                android:layout_below="@id/txtmarca"
-                android:layout_margin="15dp"
-                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Presentacion de producto"/>
+                android:layout_below="@id/txtmarca"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:hint="Presentacion de producto"
+                android:textColorHint="@color/white" />
 
             <EditText
                 android:id="@+id/txtprecio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/txtpresentacion"
+                android:layout_gravity="center"
                 android:layout_margin="15dp"
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Precio de producto"/>
+                android:hint="Precio de producto"
+                android:textColorHint="@color/white" />
 
-                 <Button
+            <Button
                 android:id="@+id/btnguardarproducto"
-                android:layout_below="@id/txtprecio"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Guardar producto"/>
+                android:layout_below="@id/txtprecio"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:text="Guardar producto" />
 
 
-
-            </LinearLayout>
-        </ScrollView>
+        </LinearLayout>
+    </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnregresar"
