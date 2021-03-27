@@ -7,7 +7,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+/**
+ * Clase encargada de conectar la DB SQLite y habilitar la BD para ser Modificada y/o Leída
+ * extiende de la clase SQLiteOpenHelper
+ */
 public class DB extends SQLiteOpenHelper {
+    //Declaración de constantes que contienen información de la BD a la que se realiza la conexión
     static String nombre_bd = "db_Tienda";
     static String tblproductos = "CREATE TABLE tblproductos(idproducto integer primary key autoincrement, codigo text, descripcion text, marca text, presentacion text, precio text, urlfoto text)";
 
@@ -15,6 +20,10 @@ public class DB extends SQLiteOpenHelper {
         super(context, nombre_bd, factory, version);
     }
 
+    /**
+     * Método encargado de crear la base de datos llamando una constante de la clase EstructuraDB
+     * @param db Objeto de la clase SQLiteDatabase
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(tblproductos);
