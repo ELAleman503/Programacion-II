@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,25 +24,37 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
+
 public class MainActivity extends AppCompatActivity {
-    FloatingActionButton btnagregar;
-    DB conexion;
-    ListView listaproducto;
+// boton flotante
+    FloatingActionButton btnadd;
+    DB miconexion;
+    ListView listaproductos;
     Cursor datosproductoscursor = null;
     ArrayList<productos> productosArrayList = new ArrayList<productos>();
     ArrayList<productos> productosArrayListcopy = new ArrayList<productos>();
-    productos productos;
+    productos misproductos;
+    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnagregar = findViewById(R.id.btnagregarproducto);
-        comprobardatos();
-        btnagregar.setOnClickListener(v-> {
-            agregaproductos("nuevo", new String[]{});
-        });
+
+        //relacionamos con xml
+        btnadd = findViewById(R.id.btnagregarproducto);
+
+        //cargar datos al abrir aplicacion
+            comprobardatos();
+
+        //evento de tocar el boton agregar producto
+       btnadd.setOnClickListener(v-> {
+          //metodo para lanzar activity agregar producto
+           agregaproductos("nuevo", new String[]{});
+       });
         buscarProductos();
+
     }
 
     @Override
@@ -48,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_productos,menu);
+
         AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo)menuInfo;
         datosproductoscursor.moveToPosition(adapterContextMenuInfo.position);
         menu.setHeaderTitle(datosproductoscursor.getString(1));
@@ -56,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         try {
+
             switch (item.getItemId()) {
                 case R.id.mxnAgregar:
                     agregaproductos("nuevo", new String[]{});
@@ -73,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     agregaproductos("modificar", datos);
                     break;
                 case R.id.mxnEliminar:
-                    eliminarProducto();
+
 
                     break;
             }
@@ -83,27 +99,8 @@ public class MainActivity extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
-    private void eliminarProducto(){
-        try {
-            AlertDialog.Builder confirmacion = new AlertDialog.Builder(MainActivity.this);
-            confirmacion.setTitle("Esta seguro de eliminar el registro?");
-            confirmacion.setMessage(datosproductoscursor.getString(2));
-            confirmacion.setPositiveButton("Si", (dialog, which) -> {
-                conexion = new DB(getApplicationContext(), "", null, 1);
-                datosproductoscursor = conexion.administracion_de_productos("eliminar", new String[]{datosproductoscursor.getString(0)});
-                comprobardatos();
-                mensajes("Registro eliminado con exito");
-                dialog.dismiss();
-            });
-            confirmacion.setNegativeButton("No", (dialog, which) -> {
-                mensajes("Eliminacion canelada por el usuario");
-                dialog.dismiss();
-            });
-            confirmacion.create().show();
-        } catch (Exception ex){
-            mensajes(ex.getMessage());
-        }
-    }
+
+
 
     private void buscarProductos() {
         TextView tempVal = findViewById(R.id.txtbuscarproducto);
@@ -121,22 +118,13 @@ public class MainActivity extends AppCompatActivity {
                 } else{
                     for (productos PB : productosArrayListcopy){
                         String nombre = PB.getDescripcion();
-                        String codigo = PB.getCodigo();
-                        String marca = PB.getMarca();
-                        String presentacion = PB.getPresentacion();
-                        String precio = PB.getPrecio();
-                        String buscando = tempVal.getText().toString().trim().toLowerCase();
-                        if(nombre.toLowerCase().contains(buscando) ||
-                                codigo.toLowerCase().contains(buscando) ||
-                                marca.toLowerCase().contains(buscando) ||
-                                presentacion.toLowerCase().contains(buscando) ||
-                                precio.toLowerCase().contains(buscando)){
+                        if(nombre.toLowerCase().contains(tempVal.getText().toString().trim().toLowerCase())){
                             productosArrayList.add(PB);
                         }
                     }
                 }
                 adaptadorImagenes adaptadorImagenes = new adaptadorImagenes(getApplicationContext(), productosArrayList);
-                listaproducto.setAdapter(adaptadorImagenes);
+                listaproductos.setAdapter(adaptadorImagenes);
             }
 
             @Override
@@ -147,36 +135,48 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    //metodo de lanzar activity
     private void agregaproductos(String accion, String[] datos) {
         try {
             Bundle parametroProductos = new Bundle();
             parametroProductos.putString("accion", accion);
+
+
             parametroProductos.putStringArray("datos",datos );
+            //lanzar activity de agregar producto
+
             Intent i = new Intent(getApplicationContext(), agregarproductos.class);
             i.putExtras(parametroProductos);
             startActivity(i);
         }catch (Exception ex){
             mensajes(ex.getMessage());
-        }}
+    }}
 
+
+    //metodo para comprobar si hay datos
     private void comprobardatos() {
-        conexion = new DB(getApplicationContext(),"",null,1);
-        datosproductoscursor = conexion.administracion_de_productos("consultar",null);
+        miconexion = new DB(getApplicationContext(),"",null,1);
+        datosproductoscursor = miconexion.administracion_de_productos("consultar",null);
 
         if( datosproductoscursor.moveToFirst() ){
+            //si se encuemtran datos cargarlos
             mostrarmisproductos();
         } else {
+            //sino enviar a guardar datos
             mensajes("No hay datos");
             agregaproductos("nuevo", new String[]{});
         }
     }
+
+    //metodos para mostrar los datos encontrados con imagen a la par
     private void mostrarmisproductos() {
-        listaproducto = findViewById(R.id.listproductos);
+        listaproductos = findViewById(R.id.listproductos);
         productosArrayList.clear();
         productosArrayListcopy.clear();
 
         do{
-            productos = new productos(
+            misproductos = new productos(
                     datosproductoscursor.getString(0),//idproducto
                     datosproductoscursor.getString(1),//codigo
                     datosproductoscursor.getString(2),//descripcion
@@ -185,14 +185,16 @@ public class MainActivity extends AppCompatActivity {
                     datosproductoscursor.getString(5), //precio
                     datosproductoscursor.getString(6) //urldefoto
             );
-            productosArrayList.add(productos);
+            productosArrayList.add(misproductos);
         }while(datosproductoscursor.moveToNext());
         adaptadorImagenes adaptadorImagenes = new adaptadorImagenes(getApplicationContext(), productosArrayList);
-        listaproducto.setAdapter(adaptadorImagenes);
+        listaproductos.setAdapter(adaptadorImagenes);
 
-        registerForContextMenu(listaproducto);
+        registerForContextMenu(listaproductos);
         productosArrayListcopy.addAll(productosArrayList);
     }
+
+
 
     class productos{
         String idproducto;
@@ -212,45 +214,59 @@ public class MainActivity extends AppCompatActivity {
             this.precio = precio;
             this.urlfoto = urlfoto;
         }
+
         public String getIdproducto() {
             return idproducto;
         }
+
         public void setIdproducto(String idproducto) {
             this.idproducto = idproducto;
         }
+
         public String getCodigo() {
             return codigo;
         }
+
         public void setCodigo(String codigo) {
             this.codigo = codigo;
         }
+
         public String getDescripcion() {
             return descripcion;
         }
+
         public void setDescripcion(String descripcion) {
             this.descripcion = descripcion;
         }
+
         public String getMarca() {
             return marca;
         }
+
         public void setMarca(String marca) {
             this.marca = marca;
         }
+
         public String getPresentacion() {
             return presentacion;
         }
+
         public void setPresentacion(String presentacion) {
             this.presentacion = presentacion;
         }
+
         public String getPrecio() {
             return precio;
         }
+
         public void setPrecio(String precio) {
             this.precio = precio;
         }
+
         public String getUrlfoto() {
             return urlfoto;
         }
+
         public void setUrlfoto(String urlfoto) {
             this.urlfoto = urlfoto;
         }

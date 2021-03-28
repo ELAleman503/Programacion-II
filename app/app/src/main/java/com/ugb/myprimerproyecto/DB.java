@@ -6,8 +6,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
 public class DB extends SQLiteOpenHelper {
-    static String nombre_bd = "db_TiendaV";
+    static String nombre_bd = "db_Tienda";
     static String tblproductos = "CREATE TABLE tblproductos(idproducto integer primary key autoincrement, codigo text, descripcion text, marca text, presentacion text, precio text, urlfoto text)";
 
     public DB(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -21,7 +22,8 @@ public class DB extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-    }
+        }
+
 
 
     public Cursor administracion_de_productos(String accion, String[] datos){
@@ -32,11 +34,11 @@ public class DB extends SQLiteOpenHelper {
         switch (accion){
             case "consultar":
                 datocursor = sqLiteDatabaseR.rawQuery("select * from tblproductos order by descripcion",null);
-                break;
+            break;
 
             case "nuevo":
                 sqLiteDatabaseW.execSQL("INSERT INTO tblproductos(codigo, descripcion, marca, presentacion, precio, urlfoto) VALUES ('"+datos[1]+"','"+datos[2]+"','"+datos[3]+"','"+datos[4]+"','"+datos[5]+"','"+datos[6]+"')");
-                break;
+            break;
             case "modificar":
                 sqLiteDatabaseW.execSQL("update tblproductos set codigo='"+datos[1]+"',descripcion='"+datos[2]+"',marca='"+datos[3]+"',presentacion='"+datos[4]+"',precio='"+datos[5]+"',urlfoto='"+datos[6]+"' where idproducto='"+datos[0]+"'");
                 break;
@@ -45,6 +47,5 @@ public class DB extends SQLiteOpenHelper {
                 break;
         }
 
-        return datocursor; }
+   return datocursor; }
 }
-
