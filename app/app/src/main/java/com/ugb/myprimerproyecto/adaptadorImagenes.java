@@ -47,8 +47,10 @@ public class adaptadorImagenes extends BaseAdapter {
         try{
             misproductos = productosArrayList.get(position);
             temp.setText(misproductos.getDescripcion());
+
             temp = encuadre.findViewById(R.id.lblprecio);
             temp.setText("$"+misproductos.getPrecio());
+
             Bitmap imagenBitmap = BitmapFactory.decodeFile(misproductos.getUrlfoto());
             img.setImageBitmap(imagenBitmap);
         }catch (Exception e){
