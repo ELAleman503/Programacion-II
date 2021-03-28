@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     private void eliminarProducto(){
         try {
             AlertDialog.Builder confirmacion = new AlertDialog.Builder(MainActivity.this);
-            confirmacion.setTitle("Esta seguro de eliminar el registro?");
+            confirmacion.setTitle("¿Desea eliminar el registro?");
             confirmacion.setMessage(datosproductoscursor.getString(2));
             confirmacion.setPositiveButton("Si", (dialog, which) -> {
                 conexion = new DB(getApplicationContext(), "", null, 1);
