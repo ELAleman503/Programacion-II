@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".agregarproductos">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                app:cardCornerRadius="150dp">
+
+                <ImageButton
+                android:id="@+id/imgfotoproducto"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp" />
+        </androidx.cardview.widget.CardView>
+
+            <EditText
+                android:id="@+id/txtcodigo"
+                      android:layout_gravity="center"
+                android:layout_below="@id/imgfotoproducto"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Codigo de producto"/>
+
+            <EditText
+                android:id="@+id/txtdescripcion"
+                android:layout_below="@id/txtcodigo"
+                android:layout_margin="15dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Descripcion de producto"/>
+
+            <EditText
+                android:id="@+id/txtmarca"
+                android:layout_below="@id/txtdescripcion"
+                android:layout_margin="15dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Marca de producto"/>
+
+
+            <EditText
+                android:id="@+id/txtpresentacion"
+                android:layout_below="@id/txtmarca"
+                android:layout_margin="15dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Presentacion de producto"/>
+
+            <EditText
+                android:id="@+id/txtprecio"
+                android:layout_below="@id/txtpresentacion"
+                android:layout_margin="15dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Precio de producto"/>
+
+                 <Button
+                android:id="@+id/btnguardarproducto"
+                android:layout_below="@id/txtprecio"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Guardar producto"/>
+
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnregresar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="25dp"
+        android:layout_gravity="right"
+        android:layout_below="@+id/btnagregarproducto"
+        android:src="@drawable/abc_vector_test" />
+    </RelativeLayout>
