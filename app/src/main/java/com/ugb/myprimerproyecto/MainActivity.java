@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.menu_productos, menu);
         try {
 
-
             if(di.hayConexionInternet()) {
                 AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo) menuInfo;
                 position = adapterContextMenuInfo.position;
@@ -82,10 +81,9 @@ public class MainActivity extends AppCompatActivity {
                 datosproductoscursor.moveToPosition(adapterContextMenuInfo.position);
 
                 menu.setHeaderTitle(datosproductoscursor.getString(2));
-              }
+            }
 
-
-              }catch (Exception e){
+        }catch (Exception e){
             mensajes(e.getMessage());
         }
     }
@@ -113,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     private void eliminarProducto(){
         try {
             AlertDialog.Builder confirmacion = new AlertDialog.Builder(MainActivity.this);
-            confirmacion.setTitle("Esta seguro de eliminar?");
+            confirmacion.setTitle("¿Seguro quiere eliminar?");
 
 if (di.hayConexionInternet()){
     jsonObjectDatosProductos = jsonArrayDatosProductos.getJSONObject(position).getJSONObject("value");
@@ -201,10 +199,7 @@ if (di.hayConexionInternet()){
 
             }
         });
-
     }
-
-
     private void ModificarProductos(String accion){
        if(di.hayConexionInternet()){
            try {
@@ -213,9 +208,7 @@ if (di.hayConexionInternet()){
 
                if(jsonArrayDatosProductos.length()>0){
                    parametros.putString("datos", jsonArrayDatosProductos.getJSONObject(position).toString() );
-
                }
-
                Intent i = new Intent(getApplicationContext(), agregarproductos.class);
                i.putExtras(parametros);
                startActivity(i);
@@ -252,13 +245,9 @@ try {
     Intent i = new Intent(getApplicationContext(), agregarproductos.class);
     i.putExtras(parametros);
     startActivity(i);
-
-
 }catch (Exception e){
 mensajes(e.getMessage());
 }
-
-
 
        }
     }
@@ -284,10 +273,8 @@ mensajes(e.getMessage());
 
              mostrarDatos();
 
-
-
             } else {
-                //sino enviar a guardar datos
+
                 mensajes("No hay datos");
             }
 
@@ -317,12 +304,9 @@ mensajes(e.getMessage());
         obtenerDatosProductosOnLine();
     } else {
            mensajes("Mostrando datos locales");
-
             obtenerDatosProductosOffLine();
         }
     }
-
-
     private void mostrarDatos(){
         try{
            ltsproductos = findViewById(R.id.listproductos);
@@ -349,19 +333,16 @@ mensajes(e.getMessage());
                     }}
                  } else {
 
-
                 do{
                     misProductos = new productos(
                             datosproductoscursor.getString(0),//idproducto
                             datosproductoscursor.getString(1),//codigo
-                            datosproductoscursor.getString(1),//codigo
-                            datosproductoscursor.getString(2),//descripcion
-                            datosproductoscursor.getString(3),//marca
-                            datosproductoscursor.getString(4),//presentacion
-                            datosproductoscursor.getString(5), //precio
-                            datosproductoscursor.getString(6) //urldefoto
-
-
+                            datosproductoscursor.getString(2),//codigo
+                            datosproductoscursor.getString(3),//descripcion
+                            datosproductoscursor.getString(4),//marca
+                            datosproductoscursor.getString(5),//presentacion
+                            datosproductoscursor.getString(6), //precio
+                            datosproductoscursor.getString(7) //urldefoto
                     );
                     productosArrayList.add(misProductos);
                 }while(datosproductoscursor.moveToNext());
@@ -376,12 +357,9 @@ mensajes(e.getMessage());
         }
     }
 
-
     private void mensajes(String msg){
         Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
     }
-
-
 
     private class ConexionconServer extends AsyncTask<String, String, String>{
         HttpURLConnection urlConnection;
@@ -390,7 +368,6 @@ mensajes(e.getMessage());
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
         }
-
         @Override
         protected String doInBackground(String... parametros) {
             StringBuilder result = new StringBuilder();
@@ -414,7 +391,6 @@ mensajes(e.getMessage());
         }
     }
 }
-
 class productos{
     String idproducto;
     String rev;

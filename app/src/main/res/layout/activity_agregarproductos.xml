@@ -38,12 +38,12 @@
 
             <EditText
                 android:id="@+id/txtcodigo"
-                      android:layout_gravity="center"
-                android:layout_below="@id/imgfotoproducto"
-                android:layout_margin="15dp"
-                android:layout_width="match_parent"
+                android:layout_width="369dp"
                 android:layout_height="wrap_content"
-                android:hint="Codigo de producto"/>
+                android:layout_below="@id/imgfotoproducto"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:hint="Codigo del vino" />
 
             <EditText
                 android:id="@+id/txtdescripcion"
@@ -71,7 +71,7 @@
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Presentacion de producto"/>
+                android:hint="Presentacion"/>
 
             <EditText
                 android:id="@+id/txtprecio"
@@ -80,7 +80,7 @@
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Precio de producto"/>
+                android:hint="Precio"/>
 
                  <Button
                 android:id="@+id/btnguardarproducto"
