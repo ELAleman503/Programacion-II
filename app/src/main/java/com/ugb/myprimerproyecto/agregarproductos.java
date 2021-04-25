@@ -44,10 +44,8 @@ public class agregarproductos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregarproductos);
 
-        //conexion
         miconexion = new DB(getApplicationContext(),"",null,1);
 
-        //relacion entre java y xml
         btnregresar = findViewById(R.id.btnregresar);
         imgfotodeproducto = findViewById(R.id.imgfotoproducto);
         btnagregarproducto = findViewById(R.id.btnguardarproducto);
