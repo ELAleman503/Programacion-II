@@ -81,8 +81,9 @@ public class MainActivity extends AppCompatActivity {
                 datosproductoscursor.moveToPosition(adapterContextMenuInfo.position);
 
                 menu.setHeaderTitle(datosproductoscursor.getString(2));
-              }
-              }catch (Exception e){
+            }
+
+        }catch (Exception e){
             mensajes(e.getMessage());
         }
     }
@@ -272,10 +273,8 @@ mensajes(e.getMessage());
 
              mostrarDatos();
 
-
-
             } else {
-                //sino enviar a guardar datos
+
                 mensajes("No hay datos");
             }
 
@@ -338,12 +337,12 @@ mensajes(e.getMessage());
                     misProductos = new productos(
                             datosproductoscursor.getString(0),//idproducto
                             datosproductoscursor.getString(1),//codigo
-                            datosproductoscursor.getString(1),//codigo
-                            datosproductoscursor.getString(2),//descripcion
-                            datosproductoscursor.getString(3),//marca
-                            datosproductoscursor.getString(4),//presentacion
-                            datosproductoscursor.getString(5), //precio
-                            datosproductoscursor.getString(6) //urldefoto
+                            datosproductoscursor.getString(2),//codigo
+                            datosproductoscursor.getString(3),//descripcion
+                            datosproductoscursor.getString(4),//marca
+                            datosproductoscursor.getString(5),//presentacion
+                            datosproductoscursor.getString(6), //precio
+                            datosproductoscursor.getString(7) //urldefoto
                     );
                     productosArrayList.add(misProductos);
                 }while(datosproductoscursor.moveToNext());
