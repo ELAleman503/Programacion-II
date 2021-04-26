@@ -50,18 +50,14 @@ public class agregarproductos extends AppCompatActivity {
         imgfotodeproducto = findViewById(R.id.imgfotoproducto);
         btnagregarproducto = findViewById(R.id.btnguardarproducto);
 
-        //btn atras
         btnregresar.setOnClickListener(v -> {
             regresarmainactivity();
         });
 
-        //btn tomar foto
         imgfotodeproducto.setOnClickListener(v -> {
             tomarfoto();
         });
 
-
-        //btn agregar producto
         btnagregarproducto.setOnClickListener(v -> {
            agregarproducto();
         });
@@ -70,18 +66,14 @@ public class agregarproductos extends AppCompatActivity {
 
     }
 
-    //metodo para regresar a pantalla anterior
     private void regresarmainactivity() {
         Intent i = new Intent(getApplicationContext(),MainActivity.class);
         startActivity(i);
     }
 
-    //metodo de tomar foto
     private void tomarfoto() {
-        //lanzar activity de camara
         tomarfotointent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-        //si la camara fue lanzada exitosamente
         if (tomarfotointent.resolveActivity(getPackageManager()) != null ){
 
             File mifoto = null;
@@ -92,10 +84,8 @@ public class agregarproductos extends AppCompatActivity {
                 mensajes(e.getMessage());
             }
 
-            //si la foto fue tomada
             if (mifoto != null){
                 try{
-                    //buscar foto para mostrarla
                     Uri urifotoproducto = FileProvider.getUriForFile(agregarproductos.this, "com.ugb.myprimerproyecto.fileprovider",mifoto);
                     tomarfotointent.putExtra(MediaStore.EXTRA_OUTPUT, urifotoproducto);
                     startActivityForResult(tomarfotointent,1);
@@ -111,7 +101,6 @@ public class agregarproductos extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //si la foto a sido correcta mapear la foto para que sea visible
         try{
             if( requestCode==1 && resultCode==RESULT_OK ){
                 Bitmap imagenBitmap = BitmapFactory.decodeFile(urldefoto);
@@ -122,29 +111,19 @@ public class agregarproductos extends AppCompatActivity {
         }
     }
 
-
-    //metodo para rutas y creacion de nombres
     private File crearfoto() throws IOException {
-        //nombre de la foto
         String tiempo = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String nombredeimagen = "img_"+ tiempo +"_";
 
-        //Ruta de almacenamiento
         File rutadealmacenamiento = getExternalFilesDir(Environment.DIRECTORY_DCIM);
-        //si la ruta de almacenamiento no existe
         if(!rutadealmacenamiento.exists()){
-            //crearla
             rutadealmacenamiento.mkdirs();
         }
-
-        //Crear temporal de foto tomada
         File image = File.createTempFile(nombredeimagen,".jpg",rutadealmacenamiento);
-        // y guardar ruta
         urldefoto = image.getAbsolutePath();
         return image;
     }
 
-    //Metodo para agregar producto
     private void agregarproducto() {
         try {
             temp = findViewById(R.id.txtcodigo);
@@ -184,18 +163,15 @@ public class agregarproductos extends AppCompatActivity {
                 String resp = guardarproducto.execute(datosproductos.toString()).get();
             }
             miconexion.administracion_de_productos(accion, datos);
-            mensajes("Registro guardado con exito.");
+            mensajes("Registro guardado");
 
             regresarmainactivity();
 
         }catch (Exception w){
 
         }
-
     }
-
     private void mostrardatosproducto() {
-
            try {
                Bundle recibirparametros = getIntent().getExtras();
                accion = recibirparametros.getString("accion");
@@ -228,12 +204,7 @@ public class agregarproductos extends AppCompatActivity {
            }catch (Exception ex){
                mensajes(ex.getMessage());
            }
-
-
     }
-
-
-    //metodo para mostrar mensajes
     private void mensajes(String msg){
         Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_LONG).show();
     }
