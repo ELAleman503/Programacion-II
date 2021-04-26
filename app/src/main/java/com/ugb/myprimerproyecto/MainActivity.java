@@ -328,7 +328,7 @@ mensajes(e.getMessage());
                                 jsonObject.getString("marca"),
                                 jsonObject.getString("presentacion"),
                                 jsonObject.getString("precio"),
-                                jsonObject.getString("urlfoto")
+                                "Url"
                         );
                         productosArrayList.add(misProductos);
                     }}
