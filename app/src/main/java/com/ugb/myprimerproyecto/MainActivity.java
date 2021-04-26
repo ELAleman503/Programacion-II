@@ -300,11 +300,13 @@ mensajes(e.getMessage());
 
     private void obtenerDatos(){
         if(di.hayConexionInternet()) {
-         mensajes("Mostrando datos desde la nube");
+         mensajes("Mostrando datos Online");
         obtenerDatosProductosOnLine();
     } else {
+            jsonArrayDatosProductos= new JSONArray();
            mensajes("Mostrando datos locales");
             obtenerDatosProductosOffLine();
+
         }
     }
     private void mostrarDatos(){
@@ -326,23 +328,21 @@ mensajes(e.getMessage());
                                 jsonObject.getString("marca"),
                                 jsonObject.getString("presentacion"),
                                 jsonObject.getString("precio"),
-                                jsonObject.getString("urlfoto")
+                                "Url"
                         );
                         productosArrayList.add(misProductos);
-
                     }}
                  } else {
-
                 do{
                     misProductos = new productos(
                             datosproductoscursor.getString(0),//idproducto
+                            datosproductoscursor.getString(0),//codigo
                             datosproductoscursor.getString(1),//codigo
-                            datosproductoscursor.getString(2),//codigo
-                            datosproductoscursor.getString(3),//descripcion
-                            datosproductoscursor.getString(4),//marca
-                            datosproductoscursor.getString(5),//presentacion
-                            datosproductoscursor.getString(6), //precio
-                            datosproductoscursor.getString(7) //urldefoto
+                            datosproductoscursor.getString(2),//descripcion
+                            datosproductoscursor.getString(3),//marca
+                            datosproductoscursor.getString(4),//presentacion
+                            datosproductoscursor.getString(5), //precio
+                            datosproductoscursor.getString(6) //urldefoto
                     );
                     productosArrayList.add(misProductos);
                 }while(datosproductoscursor.moveToNext());
