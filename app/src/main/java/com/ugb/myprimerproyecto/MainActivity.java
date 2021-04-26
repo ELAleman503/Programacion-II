@@ -391,7 +391,7 @@ mensajes(e.getMessage());
         }
     }
 }
-class productos{
+class productos {
     String idproducto;
     String rev;
     String codigo;
