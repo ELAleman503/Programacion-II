@@ -9,15 +9,17 @@
 
     <EditText
         android:id="@+id/txtbuscar"
-        android:hint="Buscar peliculas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="Buscar peliculas"
+        android:textColor="@color/white"
+        android:textColorHint="@android:color/holo_orange_dark" />
 
     <ListView
         android:id="@+id/listpelis"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnagregar"
@@ -30,6 +32,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:rotationX="4"
-        android:src="@android:drawable/ic_menu_add" />
+        android:src="@android:drawable/ic_menu_add"
+        app:backgroundTint="@android:color/holo_orange_dark" />
 
 </RelativeLayout>

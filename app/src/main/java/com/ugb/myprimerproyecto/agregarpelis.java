@@ -12,8 +12,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -92,7 +90,7 @@ public class agregarpelis extends AppCompatActivity {
             temp = findViewById(R.id.txtduracion);
             String duracion = temp.getText().toString();
 
-            temp = findViewById(R.id.txtprecio);
+            temp = findViewById(R.id.txtCosto);
             String precio = temp.getText().toString();
 
             JSONObject datospelis = new JSONObject();
@@ -147,7 +145,7 @@ public class agregarpelis extends AppCompatActivity {
                 temp = findViewById(R.id.txtduracion);
                 temp.setText(datos.getString("duracion"));
 
-                temp = findViewById(R.id.txtprecio);
+                temp = findViewById(R.id.txtCosto);
                 temp.setText(datos.getString("precio"));
 
                 urldefoto =  datos.getString("urlfoto");

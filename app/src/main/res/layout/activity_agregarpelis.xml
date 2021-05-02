@@ -21,8 +21,8 @@
 
             <ImageButton
                 android:id="@+id/imgfotopelicula"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="131dp"
+                android:layout_height="94dp"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp" />
@@ -30,19 +30,20 @@
 
             <VideoView
                 android:id="@+id/vdipelicula"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="109dp"
+                android:layout_height="78dp"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp" />
 
             <Button
                 android:id="@+id/btncargarvideo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="119dp"
+                android:layout_height="59dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:text="Cargar Trailer" />
+                android:text="Cargar Trailer"
+                app:backgroundTint="@android:color/holo_orange_dark" />
 
             <EditText
                 android:id="@+id/txtTitulo"
@@ -51,7 +52,8 @@
                 android:layout_below="@id/imgfotopelicula"
                 android:layout_gravity="center"
                 android:layout_margin="15dp"
-                android:hint="Titulo" />
+                android:hint="Titulo"
+                android:textColorHint="@color/black" />
 
             <EditText
                 android:id="@+id/txtsinopsis"
@@ -60,7 +62,8 @@
                 android:layout_below="@id/txtsinopsis"
                 android:layout_gravity="center"
                 android:layout_margin="15dp"
-                android:hint="Sinopsis" />
+                android:hint="Sinopsis"
+                android:textColorHint="@color/black" />
 
             <EditText
                 android:id="@+id/txtduracion"
@@ -69,40 +72,47 @@
                 android:layout_below="@id/txtduracion"
                 android:layout_gravity="center"
                 android:layout_margin="15dp"
-                android:hint="Duracion" />
+                android:hint="Duracion"
+                android:textColorHint="@color/black" />
 
 
             <EditText
-                android:id="@+id/txtprecio"
+                android:id="@+id/txtCosto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txtprecio"
+                android:layout_below="@id/txtCosto"
                 android:layout_gravity="center"
                 android:layout_margin="15dp"
-                android:hint="Precio" />
+                android:hint="Costo"
+                android:textColorHint="@color/black" />
 
 
             <Button
                 android:id="@+id/btnguardarpelicula"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txtprecio"
+                android:layout_below="@id/txtCosto"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:text="Guardar " />
+                android:text="Guardar "
+                app:backgroundTint="@android:color/holo_orange_dark" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnregresar"
+                android:layout_width="120dp"
+                android:layout_height="45dp"
+                android:layout_gravity="right"
+
+                android:layout_marginStart="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginBottom="25dp"
+                android:src="@drawable/abc_vector_test"
+                app:backgroundTint="@android:color/holo_orange_dark" />
 
         </LinearLayout>
     </ScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnregresar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="right"
-        android:layout_margin="25dp"
-
-        android:src="@drawable/abc_vector_test"
-        app:backgroundTint="@color/teal_200" />
 </RelativeLayout>

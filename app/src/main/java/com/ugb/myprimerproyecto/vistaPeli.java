@@ -1,22 +1,13 @@
 package com.ugb.myprimerproyecto;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -74,7 +65,7 @@ try {
                 temp = findViewById(R.id.txtduracion);
                 temp.setText(datos.getString("duracion"));
 
-                temp = findViewById(R.id.txtprecio);
+                temp = findViewById(R.id.txtCosto);
                 temp.setText(datos.getString("precio"));
 
                 urldefoto =  datos.getString("urlfoto");
