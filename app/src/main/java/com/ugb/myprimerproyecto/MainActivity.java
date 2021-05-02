@@ -128,10 +128,10 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.mxnModificar:
                     Modificar ("modificar");
                     break;
-                case R.id.mxnEliminar:
+                case R.id.mxnBorrar:
                     Eliminar();
                     break;
-                case R.id.mxnVista:
+                case R.id.mxnInf:
                     ver("datos");
                     break;
             }

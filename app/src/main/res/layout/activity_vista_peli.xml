@@ -105,7 +105,7 @@
                 android:layout_margin="15dp"
                 android:hint="Precio" />
             <TextView
-                android:id="@+id/txtprecio"
+                android:id="@+id/txtCosto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
