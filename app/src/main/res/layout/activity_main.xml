@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Buscar peliculas"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textColorHint="@android:color/holo_orange_dark" />
 
     <ListView

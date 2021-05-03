@@ -29,12 +29,12 @@ public class MainActivity extends AppCompatActivity {
 
     FloatingActionButton btnadd;
     DB miconexion;
-    ListView ltspelis;
-    Cursor datospeliscursor = null;
-    ArrayList<pelis> pelisArrayList=new ArrayList<pelis>();
-    ArrayList<pelis> pelisArrayListCopy=new ArrayList<pelis>();
-    pelis misPelis;
-    JSONArray jsonArrayDatosPelis;
+    ListView Ltspeli;
+    Cursor datospelicursor = null;
+    ArrayList<peliculas> pelisArrayList=new ArrayList<peliculas>();
+    ArrayList<peliculas> pelisArrayListCopy=new ArrayList<peliculas>();
+    peliculas misPelis;
+    JSONArray jsonArrayDatosPeli;
     JSONObject jsonObjectDatosPelis;
     utilidades u;
     String idlocal;
@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
             pelisArrayList.clear();
             pelisArrayListCopy.clear();
             try {
-            for (int i = 0; i < jsonArrayDatosPelis.length(); i++) {
-                jsonObjectDatosPelis = jsonArrayDatosPelis.getJSONObject(i).getJSONObject("value");
+            for (int i = 0; i < jsonArrayDatosPeli.length(); i++) {
+                jsonObjectDatosPelis = jsonArrayDatosPeli.getJSONObject(i).getJSONObject("value");
                 ConexionconServer objElimina = new ConexionconServer();
                 String resp = objElimina.execute(u.url_mto +
                         jsonObjectDatosPelis.getString("_id") + "?rev=" +
@@ -70,21 +70,21 @@ public class MainActivity extends AppCompatActivity {
                 ).get();  }
 
                 miconexion = new DB(getApplicationContext(), "", null, 1);
-                datospeliscursor = miconexion.administracion_de_pelis("consultar", null);
-                if( datospeliscursor.moveToFirst() ){
+                datospelicursor = miconexion.administracion_de_pelis("consultar", null);
+                if( datospelicursor.moveToFirst() ){
                     JSONObject datospelis = new JSONObject();
 
                     do {
-                        datospelis.put("titulo",datospeliscursor.getString(1));
-                        datospelis.put("sinopsis",datospeliscursor.getString(2));
-                        datospelis.put("duracion",datospeliscursor.getString(3));
-                        datospelis.put("precio",datospeliscursor.getString(4));
-                        datospelis.put("urlfoto",datospeliscursor.getString(5));
-                        datospelis.put("urltriler",datospeliscursor.getString(6));
+                        datospelis.put("titulo",datospelicursor.getString(1));
+                        datospelis.put("sinopsis",datospelicursor.getString(2));
+                        datospelis.put("duracion",datospelicursor.getString(3));
+                        datospelis.put("precio",datospelicursor.getString(4));
+                        datospelis.put("urlfoto",datospelicursor.getString(5));
+                        datospelis.put("urltriler",datospelicursor.getString(6));
                         enviarDatos guardarpelis = new enviarDatos(getApplicationContext());
                         String resp = guardarpelis.execute(datospelis.toString()).get();
 
-                    } while (datospeliscursor.moveToNext());
+                    } while (datospelicursor.moveToNext());
                 } else {
                     mensajes("No hay datos");
                 }
@@ -104,15 +104,15 @@ public class MainActivity extends AppCompatActivity {
         try {
             if(di.hayConexionInternet()) {
                 AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo) menuInfo;
-                datospeliscursor.moveToPosition(adapterContextMenuInfo.position);
+                datospelicursor.moveToPosition(adapterContextMenuInfo.position);
                 position = adapterContextMenuInfo.position;
-               menu.setHeaderTitle(jsonArrayDatosPelis.getJSONObject(position).getJSONObject("value").getString("titulo"));
+               menu.setHeaderTitle(jsonArrayDatosPeli.getJSONObject(position).getJSONObject("value").getString("titulo"));
             } else {
                 AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo)menuInfo;
-                datospeliscursor.moveToPosition(adapterContextMenuInfo.position);
-               menu.setHeaderTitle(datospeliscursor.getString(1));
+                datospelicursor.moveToPosition(adapterContextMenuInfo.position);
+               menu.setHeaderTitle(datospelicursor.getString(1));
               }
-            idlocal = datospeliscursor.getString(0);
+            idlocal = datospelicursor.getString(0);
               }catch (Exception e){
             mensajes(e.getMessage());
         }
@@ -150,34 +150,34 @@ public class MainActivity extends AppCompatActivity {
         if(di.hayConexionInternet())
         {
             try {
-                if(jsonArrayDatosPelis.length()>0){
-                    parametros.putString("datos", jsonArrayDatosPelis.getJSONObject(position).toString() );
+                if(jsonArrayDatosPeli.length()>0){
+                    parametros.putString("datos", jsonArrayDatosPeli.getJSONObject(position).toString() );
                 }
             }catch (Exception e){
                 mensajes(e.getMessage());
             }
         }else{
             try {
-                jsonArrayDatosPelis = new JSONArray();
-                jsonObjectDatosPelis.put("_id", datospeliscursor.getString(0));
-                jsonObjectDatosPelis.put("_rev", datospeliscursor.getString(0));
-                jsonObjectDatosPelis.put("titulo", datospeliscursor.getString(1));
-                jsonObjectDatosPelis.put("sinopsis", datospeliscursor.getString(2));
-                jsonObjectDatosPelis.put("duracion", datospeliscursor.getString(3));
-                jsonObjectDatosPelis.put("precio", datospeliscursor.getString(4));
-                jsonObjectDatosPelis.put("urlfoto", datospeliscursor.getString(5));
-                jsonObjectDatosPelis.put("urltriler", datospeliscursor.getString(6));
+                jsonArrayDatosPeli = new JSONArray();
+                jsonObjectDatosPelis.put("_id", datospelicursor.getString(0));
+                jsonObjectDatosPelis.put("_rev", datospelicursor.getString(0));
+                jsonObjectDatosPelis.put("titulo", datospelicursor.getString(1));
+                jsonObjectDatosPelis.put("sinopsis", datospelicursor.getString(2));
+                jsonObjectDatosPelis.put("duracion", datospelicursor.getString(3));
+                jsonObjectDatosPelis.put("precio", datospelicursor.getString(4));
+                jsonObjectDatosPelis.put("urlfoto", datospelicursor.getString(5));
+                jsonObjectDatosPelis.put("urltriler", datospelicursor.getString(6));
                 jsonValueObject.put("value", jsonObjectDatosPelis);
-                jsonArrayDatosPelis.put(jsonValueObject);
-                if(jsonArrayDatosPelis.length()>0){
-                    parametros.putString("datos", jsonArrayDatosPelis.getJSONObject(position).toString() );
+                jsonArrayDatosPeli.put(jsonValueObject);
+                if(jsonArrayDatosPeli.length()>0){
+                    parametros.putString("datos", jsonArrayDatosPeli.getJSONObject(position).toString() );
                 }
 
             }catch (Exception e){
                 mensajes(e.getMessage());
             }
         }
-        Intent i = new Intent(getApplicationContext(), vistaPeli.class);
+        Intent i = new Intent(getApplicationContext(), vistaPeliculas.class);
         i.putExtras(parametros);
         startActivity(i);
     }
@@ -185,13 +185,13 @@ public class MainActivity extends AppCompatActivity {
     private void Eliminar(){
         try {
             AlertDialog.Builder confirmacion = new AlertDialog.Builder(MainActivity.this);
-            confirmacion.setTitle("Esta seguro de eliminar?");
+            confirmacion.setTitle("¿Esta seguro en eliminar?");
             if (di.hayConexionInternet())
             {
-                jsonObjectDatosPelis = jsonArrayDatosPelis.getJSONObject(position).getJSONObject("value");
+                jsonObjectDatosPelis = jsonArrayDatosPeli.getJSONObject(position).getJSONObject("value");
                 confirmacion.setMessage(jsonObjectDatosPelis.getString("titulo"));
             }else {
-                confirmacion.setMessage(datospeliscursor.getString(1));
+                confirmacion.setMessage(datospelicursor.getString(1));
             }
 
             confirmacion.setPositiveButton("Si", (dialog, which) -> {
@@ -206,13 +206,13 @@ public class MainActivity extends AppCompatActivity {
 
                         JSONObject jsonRespEliminar = new JSONObject(resp);
                         if(jsonRespEliminar.getBoolean("ok")){
-                          jsonArrayDatosPelis.remove(position);
+                          jsonArrayDatosPeli.remove(position);
                          mostrarDatos();
                        }
                     }
 
                     miconexion = new DB(getApplicationContext(), "", null, 1);
-                    datospeliscursor = miconexion.eliminar("eliminar", datospeliscursor.getString(0));
+                    datospelicursor = miconexion.eliminar("eliminar", datospelicursor.getString(0));
                     obtenerDatos();
                     mensajes("Registro eliminado");
                     dialog.dismiss();
@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
             confirmacion.setNegativeButton("No", (dialog, which) -> {
-                mensajes("Eliminacion detendia");
+                mensajes("Eliminacion cancelada");
                 dialog.dismiss();
             });
             confirmacion.create().show();
@@ -243,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
                 if (tempVal.getText().toString().length()<1){
                     pelisArrayList.addAll(pelisArrayListCopy);
                 } else{
-                    for (pelis PB : pelisArrayListCopy){
+                    for (peliculas PB : pelisArrayListCopy){
                         String Titulo = PB.getTitulo();
                         String sinopsis = PB.getSinopsis();
                         String duracion = PB.getDuracion();
@@ -258,8 +258,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
-                adaptadorImagenes adaptadorImagenes = new adaptadorImagenes(getApplicationContext(), pelisArrayList);
-                ltspelis.setAdapter(adaptadorImagenes);
+                adaptadordeimagenes adaptadorImagenes = new adaptadordeimagenes(getApplicationContext(), pelisArrayList);
+                Ltspeli.setAdapter(adaptadorImagenes);
             }
 
             @Override
@@ -282,34 +282,34 @@ public class MainActivity extends AppCompatActivity {
         if(di.hayConexionInternet())
         {
             try {
-                if(jsonArrayDatosPelis.length()>0){
-                    parametros.putString("datos", jsonArrayDatosPelis.getJSONObject(position).toString() );
+                if(jsonArrayDatosPeli.length()>0){
+                    parametros.putString("datos", jsonArrayDatosPeli.getJSONObject(position).toString() );
                 }
             }catch (Exception e){
                 mensajes(e.getMessage());
             }
         }else{
             try {
-                jsonArrayDatosPelis = new JSONArray();
-                jsonObjectDatosPelis.put("_id", datospeliscursor.getString(0));
-                jsonObjectDatosPelis.put("_rev", datospeliscursor.getString(0));
-                jsonObjectDatosPelis.put("titulo", datospeliscursor.getString(1));
-                jsonObjectDatosPelis.put("sinopsis", datospeliscursor.getString(2));
-                jsonObjectDatosPelis.put("duracion", datospeliscursor.getString(3));
-                jsonObjectDatosPelis.put("precio", datospeliscursor.getString(4));
-                jsonObjectDatosPelis.put("urlfoto", datospeliscursor.getString(5));
-                jsonObjectDatosPelis.put("urltriler", datospeliscursor.getString(6));
+                jsonArrayDatosPeli = new JSONArray();
+                jsonObjectDatosPelis.put("_id", datospelicursor.getString(0));
+                jsonObjectDatosPelis.put("_rev", datospelicursor.getString(0));
+                jsonObjectDatosPelis.put("titulo", datospelicursor.getString(1));
+                jsonObjectDatosPelis.put("sinopsis", datospelicursor.getString(2));
+                jsonObjectDatosPelis.put("duracion", datospelicursor.getString(3));
+                jsonObjectDatosPelis.put("precio", datospelicursor.getString(4));
+                jsonObjectDatosPelis.put("urlfoto", datospelicursor.getString(5));
+                jsonObjectDatosPelis.put("urltriler", datospelicursor.getString(6));
                 jsonValueObject.put("value", jsonObjectDatosPelis);
-                jsonArrayDatosPelis.put(jsonValueObject);
-                if(jsonArrayDatosPelis.length()>0){
-                    parametros.putString("datos", jsonArrayDatosPelis.getJSONObject(position).toString() );
+                jsonArrayDatosPeli.put(jsonValueObject);
+                if(jsonArrayDatosPeli.length()>0){
+                    parametros.putString("datos", jsonArrayDatosPeli.getJSONObject(position).toString() );
                 }
 
             }catch (Exception e){
                 mensajes(e.getMessage());
             }
         }
-        Intent i = new Intent(getApplicationContext(), agregarpelis.class);
+        Intent i = new Intent(getApplicationContext(), agregarpeliculas.class);
         i.putExtras(parametros);
         startActivity(i);
     }
@@ -317,7 +317,7 @@ public class MainActivity extends AppCompatActivity {
     private void Agregar(String accion){
         Bundle parametros = new Bundle();
         parametros.putString("accion", accion);
-        Intent i = new Intent(getApplicationContext(), agregarpelis.class);
+        Intent i = new Intent(getApplicationContext(), agregarpeliculas.class);
         i.putExtras(parametros);
         startActivity(i);
     }
@@ -325,11 +325,11 @@ public class MainActivity extends AppCompatActivity {
     private void obtenerDatosOffLine(){
         try {
             miconexion = new DB(getApplicationContext(), "", null, 1);
-            datospeliscursor = miconexion.administracion_de_pelis("consultar", null);
-            if( datospeliscursor.moveToFirst() ){
+            datospelicursor = miconexion.administracion_de_pelis("consultar", null);
+            if( datospelicursor.moveToFirst() ){
              mostrarDatos();
             } else {
-                mensajes("No hay datos");
+                mensajes("no hay datos");
             }
         }catch (Exception e){
             mensajes(e.getMessage());
@@ -341,7 +341,7 @@ public class MainActivity extends AppCompatActivity {
             ConexionconServer conexionconServer = new ConexionconServer();
             String resp = conexionconServer.execute(u.urlServer, "GET").get();
             jsonObjectDatosPelis=new JSONObject(resp);
-            jsonArrayDatosPelis = jsonObjectDatosPelis.getJSONArray("rows");
+            jsonArrayDatosPeli = jsonObjectDatosPelis.getJSONArray("rows");
             mostrarDatos();
         }catch (Exception ex){
             mensajes(ex.getMessage());
@@ -350,7 +350,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void obtenerDatos(){
         if(di.hayConexionInternet()) {
-            mensajes("Mostrando datos desde la nube");
+            mensajes("Mostrando datos online");
             obtenerDatosOnLine();
             obtenerDatosOffLine();
         } else {
@@ -361,15 +361,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void mostrarDatos(){
         try{
-           ltspelis = findViewById(R.id.listpelis);
+           Ltspeli = findViewById(R.id.listpelis);
             pelisArrayList.clear();
             pelisArrayListCopy.clear();
             JSONObject jsonObject;
             if(di.hayConexionInternet()) {
-                if(jsonArrayDatosPelis.length()>0) {
-                    for (int i = 0; i < jsonArrayDatosPelis.length(); i++) {
-                        jsonObject = jsonArrayDatosPelis.getJSONObject(i).getJSONObject("value");
-                        misPelis = new pelis(
+                if(jsonArrayDatosPeli.length()>0) {
+                    for (int i = 0; i < jsonArrayDatosPeli.length(); i++) {
+                        jsonObject = jsonArrayDatosPeli.getJSONObject(i).getJSONObject("value");
+                        misPelis = new peliculas(
                                 jsonObject.getString("_id"),
                                 jsonObject.getString("_rev"),
                                 jsonObject.getString("titulo"),
@@ -378,27 +378,28 @@ public class MainActivity extends AppCompatActivity {
                                 jsonObject.getString("precio"),
                                 jsonObject.getString("urlfoto"),
                                 jsonObject.getString("urltriler")
+
                         );
                         pelisArrayList.add(misPelis);
                     }}
                  } else {
                 do{
-                    misPelis = new pelis(
-                            datospeliscursor.getString(0),//
-                            datospeliscursor.getString(1),//
-                            datospeliscursor.getString(1),//
-                            datospeliscursor.getString(2),//
-                            datospeliscursor.getString(3),//
-                            datospeliscursor.getString(4),//
-                            datospeliscursor.getString(5), //
-                            datospeliscursor.getString(6) //
+                    misPelis = new peliculas(
+                            datospelicursor.getString(0),//
+                            datospelicursor.getString(1),//
+                            datospelicursor.getString(1),//
+                            datospelicursor.getString(2),//
+                            datospelicursor.getString(3),//
+                            datospelicursor.getString(4),//
+                            datospelicursor.getString(5), //
+                            datospelicursor.getString(6) //
                     );
                     pelisArrayList.add(misPelis);
-                }while(datospeliscursor.moveToNext());
+                }while(datospelicursor.moveToNext());
               }
-              adaptadorImagenes adaptadorImagenes = new adaptadorImagenes(getApplicationContext(), pelisArrayList);
-            ltspelis.setAdapter(adaptadorImagenes);
-            registerForContextMenu(ltspelis);
+              adaptadordeimagenes adaptadorImagenes = new adaptadordeimagenes(getApplicationContext(), pelisArrayList);
+            Ltspeli.setAdapter(adaptadorImagenes);
+            registerForContextMenu(Ltspeli);
             pelisArrayListCopy.addAll(pelisArrayList);
 
         }catch (Exception e){
