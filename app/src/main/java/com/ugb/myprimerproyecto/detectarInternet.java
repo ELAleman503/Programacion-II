@@ -3,7 +3,10 @@ package com.ugb.myprimerproyecto;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-
+//Diego Alexander Alemán Castro        USIS012120
+//Mauricio Adonay Espinoza Villatoro   USIS018120
+//Mariano José Ortega Hernández        USIS016820
+//Kevin Aníbal Campos jurado           USIS017320
 public class detectarInternet {
 
     private Context context;

@@ -28,7 +28,10 @@ import android.widget.VideoView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONObject;
-
+//Diego Alexander Alemán Castro        USIS012120
+//Mauricio Adonay Espinoza Villatoro   USIS018120
+//Mariano José Ortega Hernández        USIS016820
+//Kevin Aníbal Campos jurado           USIS017320
 public class agregarpeliculas extends AppCompatActivity {
 
 

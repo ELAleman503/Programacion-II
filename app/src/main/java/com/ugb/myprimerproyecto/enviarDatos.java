@@ -13,7 +13,10 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+//Diego Alexander Alemán Castro        USIS012120
+//Mauricio Adonay Espinoza Villatoro   USIS018120
+//Mariano José Ortega Hernández        USIS016820
+//Kevin Aníbal Campos jurado           USIS017320
 public class enviarDatos extends AsyncTask<String, String, String> {
 
     Context context;

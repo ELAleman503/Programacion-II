@@ -10,7 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
+//Diego Alexander Alemán Castro        USIS012120
+//Mauricio Adonay Espinoza Villatoro   USIS018120
+//Mariano José Ortega Hernández        USIS016820
+//Kevin Aníbal Campos jurado           USIS017320
 public class adaptadordeimagenes extends BaseAdapter {
 
     Context context;

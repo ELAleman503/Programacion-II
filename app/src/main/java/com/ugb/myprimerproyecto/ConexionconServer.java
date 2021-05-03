@@ -9,7 +9,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+//Diego Alexander Alemán Castro        USIS012120
+//Mauricio Adonay Espinoza Villatoro   USIS018120
+//Mariano José Ortega Hernández        USIS016820
+//Kevin Aníbal Campos jurado           USIS017320
 public class ConexionconServer extends AsyncTask<String, String, String> {
 
     HttpURLConnection urlConnection;
