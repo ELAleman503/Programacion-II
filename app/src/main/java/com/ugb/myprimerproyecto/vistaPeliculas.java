@@ -14,7 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONObject;
 
-public class vistaPeli extends AppCompatActivity {
+public class vistaPeliculas extends AppCompatActivity {
 
     FloatingActionButton btnregresar;
     ImageView imgfotodepeli;
@@ -43,8 +43,6 @@ try {
 
 }
     }
-
-
     private void mostrardatos() {
         try {
             Bundle recibirparametros = getIntent().getExtras();
@@ -73,13 +71,11 @@ try {
 
                 imgfotodepeli.setImageURI(Uri.parse(urldefoto));
                 vdidepeli.setVideoURI(Uri.parse(urldevideo));
-
             }
         }catch (Exception ex){
 
         }
     }
-
 
     private void regresarmainactivity() {
         Intent i = new Intent(getApplicationContext(),MainActivity.class);
@@ -87,7 +83,6 @@ try {
     }
 
     private void controles(){
-        //Controles de video
         MediaController mediaController = new MediaController(this);
         vdidepeli.setMediaController(mediaController);
         mediaController.setAnchorView(vdidepeli);

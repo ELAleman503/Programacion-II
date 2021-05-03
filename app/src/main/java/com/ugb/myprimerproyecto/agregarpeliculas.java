@@ -29,7 +29,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONObject;
 
-public class agregarpelis extends AppCompatActivity {
+public class agregarpeliculas extends AppCompatActivity {
 
 
     FloatingActionButton btnregresar;
@@ -167,9 +167,9 @@ public class agregarpelis extends AppCompatActivity {
 
     private void permisos() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-        if (ActivityCompat.checkSelfPermission(agregarpelis.this, Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED){
+        if (ActivityCompat.checkSelfPermission(agregarpeliculas.this, Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED){
          }else {
-            ActivityCompat.requestPermissions(agregarpelis.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},RPQ);
+            ActivityCompat.requestPermissions(agregarpeliculas.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},RPQ);
         }
     }else {
       }

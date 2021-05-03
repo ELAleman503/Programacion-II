@@ -1,9 +1,9 @@
 package com.ugb.myprimerproyecto;
 
 
-class pelis{
+class peliculas {
 
-    String idpelis;
+    String idpeli;
     String rev;
     String titulo;
     String sinopsis;
@@ -12,8 +12,8 @@ class pelis{
     String urlfoto;
     String urltriler;
 
-    public pelis(String idpelis, String rev, String titulo, String sinopsis, String duracion, String precio, String urlfoto, String urltriler) {
-        this.idpelis = idpelis;
+    public peliculas(String idpeli, String rev, String titulo, String sinopsis, String duracion, String precio, String urlfoto, String urltriler) {
+        this.idpeli = idpeli;
         this.rev = rev;
         this.titulo = titulo;
         this.sinopsis = sinopsis;
@@ -24,11 +24,11 @@ class pelis{
     }
 
     public String getIdpelis() {
-        return idpelis;
+        return idpeli;
     }
 
     public void setIdpelis(String idpelis) {
-        this.idpelis = idpelis;
+        this.idpeli = idpelis;
     }
 
     public String getRev() {

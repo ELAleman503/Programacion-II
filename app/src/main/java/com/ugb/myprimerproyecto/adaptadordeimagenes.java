@@ -1,10 +1,7 @@
 package com.ugb.myprimerproyecto;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +11,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class adaptadorImagenes  extends BaseAdapter {
+public class adaptadordeimagenes extends BaseAdapter {
 
     Context context;
-    ArrayList<pelis> datospelisArrayList;
+    ArrayList<peliculas> datospelisArrayList;
     LayoutInflater layoutInflater;
-    pelis misPelis;
+    peliculas misPelis;
 
-    public adaptadorImagenes(Context context, ArrayList<pelis> datospelisArrayList) {
+    public adaptadordeimagenes(Context context, ArrayList<peliculas> datospelisArrayList) {
         this.context = context;
         this.datospelisArrayList = datospelisArrayList;
     }
@@ -44,13 +41,13 @@ public class adaptadorImagenes  extends BaseAdapter {
         layoutInflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View encuadre = layoutInflater.inflate(R.layout.listview_imagenes, parent, false);
         TextView temp = encuadre.findViewById(R.id.lbltitulo);
-        ImageView img = encuadre.findViewById(R.id.miniatura);
+        ImageView img = encuadre.findViewById(R.id.imgfotomini);
         try{
             misPelis = datospelisArrayList.get(position);
             temp.setText(misPelis.getTitulo());
 
-            temp = encuadre.findViewById(R.id.lblprecio);
-            temp.setText("$"+misPelis.getPrecio());
+            temp = encuadre.findViewById(R.id.lblsinopsis);
+            temp.setText(misPelis.getSinopsis());
 
           String urldefoto = misPelis.getUrlfoto();
 
