@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id= "@+id/mxnAgregar" android:title="Agregar">Agregar</item>
+<item android:id="@+id/mxnModificar" android:title="Modificar">Modificar</item>
+<item android:id="@+id/mxnEliminar" android:title="Eliminar">Eliminar</item>
+<item android:id="@+id/mxnVotar" android:title="Votar">Votar</item>
+</menu>
