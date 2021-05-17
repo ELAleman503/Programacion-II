@@ -1,9 +1,9 @@
 package com.ugb.myprimerproyecto;
 
 public class utilidades {
-    static String ip ="192.168.52.131";
-         static  String urlmostrarpostulados = "http://"+ip+":5984/db_postulados/_design/postulados/_view/mis-postulados";
-         static  String urlobtenerdatosvotantes = "http://"+ip+":5984/db_votantes/_design/votantes/_view/mis-votantes";
-         static  String urlagregrdatosvotantes = "http://"+ip+":5984/db_votantes/";
-         static  String urlagregarpostulados =   "http://"+ip+":5984/db_postulados/";
+
+         static  String urlmostrarvoluntarios = "http://192.168.42.1:5984/db_voluntarios/_design/voluntarios/_view/db_voluntarios";
+         static  String urlobteniendodatos_US = "http://192.168.42.1:5984/db_usuarios/_design/usuarios/_view/db_usuarios";
+         static  String urlagregardatos_US = "http://192.168.42.1:5984/db_usuarios/";
+         static  String urlagregarVoluntarios =   "http://192.168.42.1:5984/db_voluntarios/";
 }

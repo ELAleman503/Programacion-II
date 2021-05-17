@@ -1,32 +1,30 @@
 package com.ugb.myprimerproyecto;
 
-public class postulados {
-    String idpostulado;
+public class voluntarios {
+    String idvolunt;
     String rev;
-    String nombrepostulado;
-    String duipostulado ;
-    String propuesta;
-    String otros;
+    String nombrevolunt;
+    String duivolunt ;
+    String donacion;
     String urlfoto;
     String urlvideo;
 
-    public postulados(String idpostulado, String rev, String nombrepostulado, String duipostulado, String propuesta, String otros, String urlfoto, String urlvideo) {
-        this.idpostulado = idpostulado;
+    public voluntarios(String idpostulado, String rev, String nombrepostulado, String duipostulado, String propuesta, String otros, String urlfoto, String urlvideo) {
+        this.idvolunt = idpostulado;
         this.rev = rev;
-        this.nombrepostulado = nombrepostulado;
-        this.duipostulado = duipostulado;
-        this.propuesta = propuesta;
-        this.otros = otros;
+        this.nombrevolunt = nombrepostulado;
+        this.duivolunt = duipostulado;
+        this.donacion = propuesta;
         this.urlfoto = urlfoto;
         this.urlvideo = urlvideo;
     }
 
     public String getIdpostulado() {
-        return idpostulado;
+        return idvolunt;
     }
 
     public void setIdpostulado(String idpostulado) {
-        this.idpostulado = idpostulado;
+        this.idvolunt = idpostulado;
     }
 
     public String getRev() {
@@ -38,35 +36,27 @@ public class postulados {
     }
 
     public String getNombrepostulado() {
-        return nombrepostulado;
+        return nombrevolunt;
     }
 
     public void setNombrepostulado(String nombrepostulado) {
-        this.nombrepostulado = nombrepostulado;
+        this.nombrevolunt = nombrepostulado;
     }
 
     public String getDuipostulado() {
-        return duipostulado;
+        return duivolunt;
     }
 
     public void setDuipostulado(String duipostulado) {
-        this.duipostulado = duipostulado;
+        this.duivolunt = duipostulado;
     }
 
     public String getPropuesta() {
-        return propuesta;
+        return donacion;
     }
 
     public void setPropuesta(String propuesta) {
-        this.propuesta = propuesta;
-    }
-
-    public String getOtros() {
-        return otros;
-    }
-
-    public void setOtros(String otros) {
-        this.otros = otros;
+        this.donacion = propuesta;
     }
 
     public String getUrlfoto() {

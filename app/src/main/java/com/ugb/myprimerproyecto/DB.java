@@ -32,9 +32,7 @@ public class DB extends SQLiteOpenHelper {
                 sqLiteDatabaseW.execSQL("INSERT INTO tblusuario(nombre, dui, telefono, mail, pass) VALUES ('"+datos[0]+"','"+datos[1]+"','"+datos[2]+"','"+datos[3]+"','"+datos[4]+"')");
                 break;
         }
-
         return datocursor; }
-
     public Cursor consultar_usuario(String accion, String dui, String pass){
         Cursor datocursor = null;
         SQLiteDatabase sqLiteDatabaseW = getWritableDatabase();
