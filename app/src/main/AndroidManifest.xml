@@ -9,15 +9,15 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/ic_donates"
+        android:label="DonanteSV"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.MyPrimerProyecto">
-        <activity android:name=".agregarpostulados"></activity>
-        <activity android:name=".mostrarpostulados" />
-        <activity android:name=".registrorvotante" />
+        <activity android:name=".agregarVoluntarios"></activity>
+        <activity android:name=".mostrarvoluntarios" />
+        <activity android:name=".registrousuario" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

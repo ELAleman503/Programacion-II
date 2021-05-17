@@ -36,7 +36,7 @@ public class enviarDatos extends AsyncTask<String, String, String> {
         BufferedReader bufferedReader;
 
         try{
-            URL url = new URL(uc.urlagregarpostulados);
+            URL url = new URL(uc.urlagregarVoluntarios);
             urlConnection = (HttpURLConnection)url.openConnection();
             urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);
@@ -67,7 +67,7 @@ public class enviarDatos extends AsyncTask<String, String, String> {
             jsonResponse = stringBuffer.toString();
             return jsonResponse;
         }catch (Exception e){
-            Log.d("ENVIANDO", "Error: "+ e.getMessage());
+            Log.d("Enviar", "Error: "+ e.getMessage());
         }
         return null;
     }

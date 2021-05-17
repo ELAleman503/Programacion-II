@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mostrarpostulados">
+    tools:context=".mostrarvoluntarios">
 
     <TextView
         android:id="@+id/nombre"
@@ -34,7 +34,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnagregar"
-        android:src="@android:drawable/ic_menu_add"
+        android:src="@drawable/ic_iconfinder_icons_edit_1564503"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="20dp"

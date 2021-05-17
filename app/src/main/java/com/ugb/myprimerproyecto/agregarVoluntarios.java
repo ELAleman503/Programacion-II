@@ -30,7 +30,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONObject;
 
-public class agregarpostulados extends AppCompatActivity {
+public class agregarVoluntarios extends AppCompatActivity {
     FloatingActionButton btnregresar;
     ImageView imgfoto;
     VideoView vdidep;
@@ -45,7 +45,7 @@ public class agregarpostulados extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agregarpostulados);
+        setContentView(R.layout.activity_agregarvoluntarios);
         btnregresar = findViewById(R.id.btnregresar);
         btncargarvideo = findViewById(R.id.btncargarvideo);
         imgfoto = findViewById(R.id.imgfoto);
@@ -81,11 +81,9 @@ public class agregarpostulados extends AppCompatActivity {
             temp = findViewById(R.id.txtdui);
             String dui = temp.getText().toString();
 
-            temp = findViewById(R.id.txtpropuesta);
+            temp = findViewById(R.id.txtdonar);
             String propuesta = temp.getText().toString();
 
-            temp = findViewById(R.id.txtotro);
-            String otro = temp.getText().toString();
 
             JSONObject datoss = new JSONObject();
             if(accion.equals("modificar") && idpostulado.length()>0 && rev.length()>0 ){
@@ -96,7 +94,6 @@ public class agregarpostulados extends AppCompatActivity {
             datoss.put("nombre",nombre);
             datoss.put("dui",dui);
             datoss.put("propuesta",propuesta);
-            datoss.put("otro",otro);
             datoss.put("urlfoto",urldefoto);
             datoss.put("urltriler",urldevideo);
 
@@ -115,9 +112,9 @@ public class agregarpostulados extends AppCompatActivity {
 
     private void permisos() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            if (ActivityCompat.checkSelfPermission(agregarpostulados.this, Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED){
+            if (ActivityCompat.checkSelfPermission(agregarVoluntarios.this, Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED){
             }else {
-                ActivityCompat.requestPermissions(agregarpostulados.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},RPQ);
+                ActivityCompat.requestPermissions(agregarVoluntarios.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},RPQ);
             }
         }else {
         }
@@ -168,7 +165,7 @@ public class agregarpostulados extends AppCompatActivity {
     }
 
     private void regresarmainactivity() {
-        Intent i = new Intent(getApplicationContext(),mostrarpostulados.class);
+        Intent i = new Intent(getApplicationContext(), mostrarvoluntarios.class);
         startActivity(i);
     }
 

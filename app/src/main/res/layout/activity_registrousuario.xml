@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".agregarpostulados">
-
+    tools:context=".registrousuario">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,36 +17,13 @@
             android:orientation="vertical">
 
 
-            <ImageButton
-                android:id="@+id/imgfoto"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp" />
 
-
-            <VideoView
-                android:id="@+id/vdip"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp" />
-
-            <Button
-                android:id="@+id/btncargarvideo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:text="Cargar Video" />
 
             <EditText
                 android:id="@+id/txtnombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/imgfoto"
+
                 android:layout_gravity="center"
                 android:layout_margin="15dp"
                 android:hint="Nombre" />
@@ -59,33 +35,42 @@
                 android:layout_below="@id/txtnombre"
                 android:layout_gravity="center"
                 android:layout_margin="15dp"
-                android:hint="DUI" />
+                android:hint="DUI (este numero sera su usuario)" />
 
             <EditText
-                android:id="@+id/txtpropuesta"
+                android:id="@+id/txttelefono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txtdui"
                 android:layout_gravity="center"
                 android:layout_margin="15dp"
-                android:hint="Propuesta" />
+                android:hint="Telefono" />
 
 
             <EditText
-                android:id="@+id/txtotro"
+                android:id="@+id/txtcorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txtpropuesta"
+                android:layout_below="@id/txttelefono"
                 android:layout_gravity="center"
                 android:layout_margin="15dp"
-                android:hint="Otros" />
+                android:hint="Correo" />
+
+            <EditText
+                android:id="@+id/txtpass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtcorreo"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:hint="Contraseña" />
 
 
             <Button
-                android:id="@+id/btnguardarpelicula"
-                android:layout_width="match_parent"
+                android:id="@+id/btnguardar"
+                android:layout_width="164dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txtotro"
+                android:layout_below="@id/txtpass"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:text="Guardar registro" />
@@ -101,6 +86,6 @@
         android:layout_alignParentRight="true"
         android:layout_margin="25dp"
         android:layout_gravity="right"
+        android:src="@drawable/ic_iconfinder_login_4115234" />
 
-        android:src="@drawable/abc_vector_test" />
 </RelativeLayout>

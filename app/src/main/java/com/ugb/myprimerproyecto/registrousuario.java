@@ -5,20 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONObject;
 
-public class registrorvotante extends AppCompatActivity {
+public class registrousuario extends AppCompatActivity {
 
     FloatingActionButton btnregresar;
     String accion = "nuevo";
-    Button btnagregar;
+    Button Btnagregar;
     DB miconexion;
     detectarInternet di;
     TextView temp;
@@ -26,17 +24,17 @@ public class registrorvotante extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registrorvotante);
+        setContentView(R.layout.activity_registrousuario);
 
         miconexion = new DB(getApplicationContext(),"",null,1);
         btnregresar = findViewById(R.id.btnregresar);
-        btnagregar = findViewById(R.id.btnguardar);
+        Btnagregar = findViewById(R.id.btnguardar);
 
         btnregresar.setOnClickListener(v -> {
             regresarmainactivity();
         });
 
-        btnagregar.setOnClickListener(v -> {
+        Btnagregar.setOnClickListener(v -> {
             agregar();
         });
 
@@ -77,7 +75,7 @@ public class registrorvotante extends AppCompatActivity {
                 String resp = guardarpelis.execute(datosss.toString()).get();
             }
 
-            mensajes("Registro guardado con exito.");
+            mensajes("Registro guardado.");
             regresarmainactivity();
         }catch (Exception w){
             mensajes(w.getMessage());

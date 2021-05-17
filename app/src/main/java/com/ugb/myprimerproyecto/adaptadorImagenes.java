@@ -13,22 +13,22 @@ import java.util.ArrayList;
 
 public class adaptadorImagenes extends BaseAdapter {
     Context context;
-    ArrayList<postulados> datospostuladosArrayList;
+    ArrayList<com.ugb.myprimerproyecto.voluntarios> datosvoluntariosArrayList;
     LayoutInflater layoutInflater;
-    postulados mispostulados;
+    com.ugb.myprimerproyecto.voluntarios voluntarios;
 
-    public adaptadorImagenes(Context context, ArrayList<postulados> datospostuladosArrayList) {
+    public adaptadorImagenes(Context context, ArrayList<com.ugb.myprimerproyecto.voluntarios> datospostuladosArrayList) {
         this.context = context;
-        this.datospostuladosArrayList = datospostuladosArrayList;
+        this.datosvoluntariosArrayList = datospostuladosArrayList;
     }
 
     @Override
     public int getCount() {
-        return datospostuladosArrayList.size();
+        return datosvoluntariosArrayList.size();
     }
     @Override
     public Object getItem(int position) {
-        return datospostuladosArrayList.get(position);
+        return datosvoluntariosArrayList.get(position);
     }
     @Override
     public long getItemId(int position) {
@@ -42,13 +42,10 @@ public class adaptadorImagenes extends BaseAdapter {
         TextView temp = encuadre.findViewById(R.id.lbltitulo);
         ImageView img = encuadre.findViewById(R.id.miniatura);
         try{
-            mispostulados = datospostuladosArrayList.get(position);
-            temp.setText(mispostulados.getNombrepostulado());
+            voluntarios = datosvoluntariosArrayList.get(position);
+            temp.setText(voluntarios.getNombrepostulado());
 
-            temp = encuadre.findViewById(R.id.lblotros);
-            temp.setText(mispostulados.getOtros());
-
-          String urldefoto = mispostulados.getUrlfoto();
+          String urldefoto = voluntarios.getUrlfoto();
 
          img.setImageURI(Uri.parse(urldefoto));
 

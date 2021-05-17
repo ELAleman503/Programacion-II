@@ -17,7 +17,7 @@ import java.net.URL;
 public class enviarusuarios extends AsyncTask<String, String, String> {
     Context context;
     utilidades uc = new utilidades();
-    String resp;
+    String respuesta;
 
     public enviarusuarios(Context context) {
         this.context = context;
@@ -36,7 +36,7 @@ public class enviarusuarios extends AsyncTask<String, String, String> {
         BufferedReader bufferedReader;
 
         try{
-            URL url = new URL(uc.urlagregrdatosvotantes);
+            URL url = new URL(uc.urlagregardatos_US);
             urlConnection = (HttpURLConnection)url.openConnection();
             urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);
@@ -54,7 +54,7 @@ public class enviarusuarios extends AsyncTask<String, String, String> {
                 return null;
             }
             bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            resp = bufferedReader.toString();
+            respuesta = bufferedReader.toString();
 
             String line;
             StringBuffer stringBuffer = new StringBuffer();
@@ -67,7 +67,7 @@ public class enviarusuarios extends AsyncTask<String, String, String> {
             jsonResponse = stringBuffer.toString();
             return jsonResponse;
         }catch (Exception e){
-            Log.d("ENVIANDO", "Error: "+ e.getMessage());
+            Log.d("enviando", "Error: "+ e.getMessage());
         }
         return null;
     }
