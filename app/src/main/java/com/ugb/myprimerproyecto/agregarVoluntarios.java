@@ -158,7 +158,7 @@ public class agregarVoluntarios extends AppCompatActivity {
         if (requestCode== RPQ){
             if(permissions.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
             }else{
-                mensajes("Por favor dame los permisos");
+                mensajes("Dame Permiso");
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -170,7 +170,6 @@ public class agregarVoluntarios extends AppCompatActivity {
     }
 
     private void controles(){
-        //Controles de video
         MediaController mediaController = new MediaController(this);
         vdidep.setMediaController(mediaController);
         mediaController.setAnchorView(vdidep);
@@ -181,10 +180,6 @@ public class agregarVoluntarios extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_LONG).show();
     }
 
-
-
-    //las url de android jellybeans en adelante contienen permisos temporales para acceder a ellas
-    //con este metodo se octiene la url real del archivo para evitar probleamas
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static String getRealUrl(final Context context, final Uri uri) {
         final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
@@ -234,7 +229,6 @@ public class agregarVoluntarios extends AppCompatActivity {
 
         return null;
     }
-
 
     public static String getDataColumn(Context context, Uri uri, String selection,
                                        String[] selectionArgs) {

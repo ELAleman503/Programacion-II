@@ -92,7 +92,7 @@ public class mostrarvoluntarios extends AppCompatActivity {
             jsonArrayDatosvoluntarios = jsonObjectDatosvoluntarios.getJSONArray("rows");
             mostrarDatos();
         }catch (Exception ex){
-            mensajes(ex.getMessage());
+
         }
     }
 
@@ -111,7 +111,7 @@ public class mostrarvoluntarios extends AppCompatActivity {
                                 jsonObject.getString("_rev"),
                                 jsonObject.getString("nombre"),
                                 jsonObject.getString("dui"),
-                                jsonObject.getString("propuesta"),
+                                jsonObject.getString("donacion"),
                                 jsonObject.getString("otro"),
                                 jsonObject.getString("urlfoto"),
                                 jsonObject.getString("urltriler")
@@ -126,7 +126,7 @@ public class mostrarvoluntarios extends AppCompatActivity {
             voluntariosArrayListCopy.addAll(voluntariosArrayList);
 
         }catch (Exception e){
-            mensajes(e.getMessage());
+
         }
     }
     private void mensajes(String msg){
