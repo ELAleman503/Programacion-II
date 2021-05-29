@@ -34,9 +34,10 @@ public class agregarVoluntarios extends AppCompatActivity {
     FloatingActionButton btnregresar;
     ImageView imgfoto;
     VideoView vdidep;
-    String urldefoto="", urldevideo="",idpostulado, accion = "nuevo", rev;
+    String urldefoto="", urldevideo="",idvoluntarios, accion = "nuevo", rev,_id;
     Button btnagregar, btncargarvideo;
     TextView temp;
+    String lognombre,logdui,logtelefono,logmail,logpadss;
     detectarInternet di;
     private static final int RPQ= 100;
     private static final int RIG= 101;
@@ -69,7 +70,7 @@ public class agregarVoluntarios extends AppCompatActivity {
         });
 
         permisos();
-      //  mostrardatos();
+        mostrardatos();
         controles();
     }
 
@@ -82,18 +83,21 @@ public class agregarVoluntarios extends AppCompatActivity {
             String dui = temp.getText().toString();
 
             temp = findViewById(R.id.txtdonar);
-            String propuesta = temp.getText().toString();
+            String donar = temp.getText().toString();
 
 
             JSONObject datoss = new JSONObject();
-            if(accion.equals("modificar") && idpostulado.length()>0 && rev.length()>0 ){
-                datoss.put("_id",idpostulado);
+            if(accion.equals("modificar") && idvoluntarios.length()>0 && rev.length()>0 ){
+                datoss.put("_id",_id);
                 datoss.put("_rev",rev);
+            }else if (accion.equals("nuevo")){
+                datoss.put("_id",dui);
             }
+
 
             datoss.put("nombre",nombre);
             datoss.put("dui",dui);
-            datoss.put("propuesta",propuesta);
+            datoss.put("donar",donar);
             datoss.put("urlfoto",urldefoto);
             datoss.put("urltriler",urldevideo);
 
@@ -107,6 +111,48 @@ public class agregarVoluntarios extends AppCompatActivity {
             regresarmainactivity();
         }catch (Exception w){
             mensajes(w.getMessage());
+        }
+    }
+
+    private void mostrardatos() {
+        try {
+            Bundle recibirparametros = getIntent().getExtras();
+            accion = recibirparametros.getString("accion");
+
+            lognombre = recibirparametros.getString("nombre");
+            logdui = recibirparametros.getString("duii");
+            logtelefono = recibirparametros.getString("telefono");
+            logmail = recibirparametros.getString("mail");
+            logpadss = recibirparametros.getString("padss");
+
+            if(accion.equals("modificar")){
+                JSONObject datos = new JSONObject(recibirparametros.getString("datos")).getJSONObject("value");
+                idvoluntarios = datos.getString("_id");
+                _id = datos.getString("_id");
+
+                rev = datos.getString("_rev");
+
+                temp = findViewById(R.id.txtnombre);
+                temp.setText(datos.getString("nombre"));
+
+                temp = findViewById(R.id.txtdui);
+                temp.setText(datos.getString("dui"));
+
+                temp = findViewById(R.id.txtdonar);
+                temp.setText(datos.getString("donar"));
+
+
+                urldefoto =  datos.getString("urlfoto");
+                urldevideo =  datos.getString("urltriler");
+
+
+                imgfoto.setImageURI(Uri.parse(urldefoto));
+                vdidep.setVideoURI(Uri.parse(urldevideo));
+
+            }
+        }catch (Exception ex){
+            mensajes(ex.getMessage());
+
         }
     }
 
@@ -165,8 +211,15 @@ public class agregarVoluntarios extends AppCompatActivity {
     }
 
     private void regresarmainactivity() {
-        Intent i = new Intent(getApplicationContext(), mostrarvoluntarios.class);
-        startActivity(i);
+        Bundle parametros = new Bundle();
+        parametros.putString("nombre", lognombre);
+        parametros.putString("duii", logdui);
+        parametros.putString("telefono", logtelefono);
+        parametros.putString("mail", logmail);
+        parametros.putString("padss", logpadss);
+        Intent lanzar = new Intent(getApplicationContext(), mostrarvoluntarios.class);
+        lanzar.putExtras(parametros);
+        startActivity(lanzar);
     }
 
     private void controles(){
