@@ -57,8 +57,8 @@ public class mostrarvolunt extends AppCompatActivity {
         logpadss = recibirparametros.getString("padss");
 
 
-        nombrel.setText(lognombre);
-        duil.setText(logdui);
+        //nombrel.setText(lognombre);
+       // duil.setText(logdui);
 
         di = new detectarInternet(getApplicationContext());
         btnadd = findViewById(R.id.btnagregar);
@@ -86,7 +86,7 @@ public class mostrarvolunt extends AppCompatActivity {
 
     private void obtenerDatos() {
         if(di.hayConexionInternet()) {
-            mensajes("Mostrando datos de votacion");
+            mensajes("Mostrando datos");
             obtenerDatosOnLine();
            } else {
             mensajes("No se pudo conectar con la base");
@@ -120,8 +120,8 @@ public class mostrarvolunt extends AppCompatActivity {
                                 jsonObject.getString("_rev"),
                                 jsonObject.getString("nombre"),
                                 jsonObject.getString("dui"),
-                                jsonObject.getString("propuesta"),
-                                jsonObject.getString("otro"),
+                                jsonObject.getString("pdonacion"),
+                                jsonObject.getString("odireccion"),
                                 jsonObject.getString("urlfoto"),
                                 jsonObject.getString("urltriler")
                         );
@@ -182,10 +182,10 @@ public class mostrarvolunt extends AppCompatActivity {
     private void Eliminar(){
         try {
             AlertDialog.Builder confirmacion = new AlertDialog.Builder(mostrarvolunt.this);
-            confirmacion.setTitle("Esta seguro de eliminar?");
+            confirmacion.setTitle("¿Seguro quiere eliminar?");
 
                 jsonObjectDatospostulados = jsonArrayDatospostulados.getJSONObject(position).getJSONObject("value");
-                confirmacion.setMessage(jsonObjectDatospostulados.getString("nombre"));
+                confirmacion.setMessage(jsonObjectDatospostulados.getString("dui"));
 
             confirmacion.setPositiveButton("Si", (dialog, which) -> {
 
@@ -211,7 +211,7 @@ public class mostrarvolunt extends AppCompatActivity {
                 }
             });
             confirmacion.setNegativeButton("No", (dialog, which) -> {
-                mensajes("Eliminacion detendia");
+                mensajes("Se detubo el exterminio");
                 dialog.dismiss();
             });
             confirmacion.create().show();

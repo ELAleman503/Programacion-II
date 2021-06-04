@@ -20,8 +20,8 @@
 
             <ImageButton
                 android:id="@+id/imgfoto"
-                android:layout_width="99dp"
-                android:layout_height="87dp"
+                android:layout_width="104dp"
+                android:layout_height="95dp"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp" />

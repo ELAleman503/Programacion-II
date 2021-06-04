@@ -88,7 +88,7 @@ public class agregarvolunt extends AppCompatActivity {
             String dui = temp.getText().toString();
 
             temp = findViewById(R.id.txtpdonacion);
-            String donacion = temp.getText().toString();
+            String pdonacion = temp.getText().toString();
 
             temp = findViewById(R.id.txtodireccion);
             String odireccion = temp.getText().toString();
@@ -104,7 +104,7 @@ public class agregarvolunt extends AppCompatActivity {
 
             datoss.put("nombre",nombre);
             datoss.put("dui",dui);
-            datoss.put("donacion",donacion);
+            datoss.put("pdonacion",pdonacion);
             datoss.put("odireccion",odireccion);
             datoss.put("urlfoto",urldefoto);
             datoss.put("urltriler",urldevideo);
@@ -148,7 +148,7 @@ public class agregarvolunt extends AppCompatActivity {
                 temp.setText(datos.getString("dui"));
 
                 temp = findViewById(R.id.txtpdonacion);
-                temp.setText(datos.getString("donacion"));
+                temp.setText(datos.getString("pdonacion"));
 
                 temp = findViewById(R.id.txtodireccion);
                 temp.setText(datos.getString("odireccion"));
@@ -236,17 +236,14 @@ public class agregarvolunt extends AppCompatActivity {
     }
 
     private void controles(){
-        //Controles de video
         MediaController mediaController = new MediaController(this);
         vdidep.setMediaController(mediaController);
         mediaController.setAnchorView(vdidep);
     }
 
-
     private void mensajes(String msg){
         Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_LONG).show();
     }
-
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static String getRealUrl(final Context context, final Uri uri) {

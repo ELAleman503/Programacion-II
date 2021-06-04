@@ -9,13 +9,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.an.biometric.BiometricCallback;
-import com.an.biometric.BiometricManager;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity implements BiometricCallback {
+public class MainActivity extends AppCompatActivity {
 
     Button login, registro;
     TextView temp;
@@ -44,13 +42,7 @@ public class MainActivity extends AppCompatActivity implements BiometricCallback
            startActivity(i);
         });
 
-        new BiometricManager.BiometricBuilder(MainActivity.this)
-                .setTitle("DonasioneSV")
-                .setSubtitle("Identificate")
-                .setDescription("Colocar huella para iniciar secion")
-                .setNegativeButtonText("Cancelar")
-                .build()
-                .authenticate(MainActivity.this);
+
     }
 
     private void logilocal() {
@@ -122,67 +114,5 @@ public class MainActivity extends AppCompatActivity implements BiometricCallback
         Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void onSdkVersionNotSupported() {
 
-    }
-
-    @Override
-    public void onBiometricAuthenticationNotSupported() {
-
-    }
-
-    @Override
-    public void onBiometricAuthenticationNotAvailable() {
-
-    }
-
-    @Override
-    public void onBiometricAuthenticationPermissionNotGranted() {
-
-    }
-
-    @Override
-    public void onBiometricAuthenticationInternalError(String error) {
-
-    }
-
-    @Override
-    public void onAuthenticationFailed() {
-
-    }
-
-    @Override
-    public void onAuthenticationCancelled() {
-
-    }
-
-    @Override
-    public void onAuthenticationSuccessful() {
-
-
-        try {
-            miconex = new DB(getApplicationContext(), "", null, 1);
-            datosusuariocursor = miconex.consultar_usuario("consultar");
-
-            if( datosusuariocursor.moveToFirst() ){
-              dui=   datosusuariocursor.getString(2);
-              pass=   datosusuariocursor.getString(5);
-                logi();
-            }
-        }catch (Exception e){
-            mensajes(e.getMessage());
-        }
-
-    }
-
-    @Override
-    public void onAuthenticationHelp(int helpCode, CharSequence helpString) {
-
-    }
-
-    @Override
-    public void onAuthenticationError(int errorCode, CharSequence errString) {
-
-    }
 }
