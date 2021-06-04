@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".agregarvolunt">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <ImageButton
+                android:id="@+id/imgfoto"
+                android:layout_width="99dp"
+                android:layout_height="87dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp" />
+
+            <VideoView
+                android:id="@+id/vdip"
+                android:layout_width="99dp"
+                android:layout_height="92dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp" />
+
+            <Button
+                android:id="@+id/btncargarvideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:text="Cargar Video" />
+
+            <EditText
+                android:id="@+id/txtnombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgfoto"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:hint="Nombre" />
+
+            <EditText
+                android:id="@+id/txtdui"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtnombre"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:hint="DUI"
+                 />
+
+
+            <EditText
+                android:id="@+id/txtpdonacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtdui"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:hint="Donacion" />
+
+
+            <EditText
+                android:id="@+id/txtodireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtpdonacion"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:hint="Direccion" />
+
+
+            <Button
+                android:id="@+id/btnguardarpelicula"
+                android:layout_width="203dp"
+                android:layout_height="43dp"
+                android:layout_below="@id/txtodireccion"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:text="Guardar"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnregresar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="25dp"
+        android:layout_gravity="right"
+
+        android:src="@drawable/ic_regresar_2" />
+</RelativeLayout>

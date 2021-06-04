@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/imgLogin"
+        android:layout_width="122dp"
+        android:layout_height="137dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/ic_login" />
+
+    <TextView
+        android:id="@+id/txtHola"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgLogin"
+        android:layout_gravity="center"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginRight="15dp"
+        android:text="Hola Bienvenido!"
+        android:textSize="35sp" />
+
+    <EditText
+        android:id="@+id/txtuss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint="Usuario" />
+
+    <EditText
+        android:id="@+id/txtpass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtuss"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:inputType="textPassword"
+        android:hint="Contraseña" />
+
+
+    <Button
+        android:id="@+id/btniniciar"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtpass"
+        android:layout_gravity="center"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="15dp"
+        android:text="Iniciar" />
+
+    <Button
+        android:id="@+id/btnregistrar"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btniniciar"
+        android:layout_gravity="center"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginRight="15dp"
+        android:text="Registro" />
+
+
+</RelativeLayout>
