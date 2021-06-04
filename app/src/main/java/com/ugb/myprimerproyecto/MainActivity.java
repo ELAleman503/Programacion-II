@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     JSONObject jsonObjectDatosusuarios;
     Cursor datosusuariocursor = null;
     detectarInternet di;
+    String dui,pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         registro = findViewById(R.id.btnregistrar);
 
         login.setOnClickListener(v->{
-            logi();
+            loginlocal();
         });
 
         registro.setOnClickListener(v->{
@@ -40,14 +41,19 @@ public class MainActivity extends AppCompatActivity {
            startActivity(i);
         });
     }
+    private void loginlocal() {
+        temp = findViewById(R.id.txtuss);
+        dui = temp.getText().toString();
+
+        temp = findViewById(R.id.txtpass);
+        pass = temp.getText().toString();
+        logi();
+
+
+    }
 
     private void logi() {
      try {
-         temp = findViewById(R.id.txtuss);
-         String dui = temp.getText().toString();
-
-         temp = findViewById(R.id.txtpass);
-         String pass = temp.getText().toString();
 
          ConexionconServer conexionconServer = new ConexionconServer();
          String resp = conexionconServer.execute(uti.urlobteniendodatos_US, "GET").get();
@@ -71,13 +77,19 @@ public class MainActivity extends AppCompatActivity {
                             String mail = jsonObject.getString("correo");
                             String padss = jsonObject.getString("pass");
 
-                            Intent ik = new Intent(MainActivity.this, mostrarvoluntarios.class);
-                            ik.putExtra(mostrarvoluntarios.nombre, nombre);
-                            ik.putExtra(mostrarvoluntarios.duii,dui1);
-                            ik.putExtra(mostrarvoluntarios.telefono, telefono);
-                            ik.putExtra(mostrarvoluntarios.mail, mail);
-                            ik.putExtra(mostrarvoluntarios.padss,padss);
-                            startActivity(ik);
+                            Bundle parametros = new Bundle();
+                            parametros.putString("nombre", nombre);
+                            parametros.putString("duii", dui1);
+                            parametros.putString("telefono", telefono);
+                            parametros.putString("mail", mail);
+                            parametros.putString("padss", padss);
+                            Intent lanzar = new Intent(getApplicationContext(), mostrarvoluntarios.class);
+                            lanzar.putExtras(parametros);
+                            startActivity(lanzar);
+                            try { String[] datos = {dui1,nombre, dui1, telefono, mail, padss};
+                                miconexion.agregar_usuario("nuevo", datos);
+
+                            }catch (Exception e){}
                         }
                      }
                  }}
@@ -90,4 +102,5 @@ public class MainActivity extends AppCompatActivity {
     private void mensajes(String msg){
         Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT).show();
     }
+
 }

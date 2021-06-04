@@ -9,12 +9,12 @@ public class voluntarios {
     String urlfoto;
     String urlvideo;
 
-    public voluntarios(String idpostulado, String rev, String nombrepostulado, String duipostulado, String propuesta, String otros, String urlfoto, String urlvideo) {
-        this.idvolunt = idpostulado;
+    public voluntarios(String idvolunt, String rev, String nombrevolunt, String duivolunt, String donacion,  String urlfoto, String urlvideo) {
+        this.idvolunt = idvolunt;
         this.rev = rev;
-        this.nombrevolunt = nombrepostulado;
-        this.duivolunt = duipostulado;
-        this.donacion = propuesta;
+        this.nombrevolunt = nombrevolunt;
+        this.duivolunt = duivolunt;
+        this.donacion = donacion;
         this.urlfoto = urlfoto;
         this.urlvideo = urlvideo;
     }
@@ -23,8 +23,8 @@ public class voluntarios {
         return idvolunt;
     }
 
-    public void setIdpostulado(String idpostulado) {
-        this.idvolunt = idpostulado;
+    public void setIdvolunt(String idvolunt) {
+        this.idvolunt = idvolunt;
     }
 
     public String getRev() {
@@ -35,28 +35,28 @@ public class voluntarios {
         this.rev = rev;
     }
 
-    public String getNombrepostulado() {
+    public String getNombrevolunt() {
         return nombrevolunt;
     }
 
-    public void setNombrepostulado(String nombrepostulado) {
-        this.nombrevolunt = nombrepostulado;
+    public void setNombrevolunt(String nombrevolunt) {
+        this.nombrevolunt = nombrevolunt;
     }
 
     public String getDuipostulado() {
         return duivolunt;
     }
 
-    public void setDuipostulado(String duipostulado) {
-        this.duivolunt = duipostulado;
+    public void setDuivolunt(String duivolunt) {
+        this.duivolunt = duivolunt;
     }
 
-    public String getPropuesta() {
+    public String getDonacion() {
         return donacion;
     }
 
-    public void setPropuesta(String propuesta) {
-        this.donacion = propuesta;
+    public void setDonacion(String donacion) {
+        this.donacion = donacion;
     }
 
     public String getUrlfoto() {

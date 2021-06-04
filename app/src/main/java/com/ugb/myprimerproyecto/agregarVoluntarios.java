@@ -34,7 +34,7 @@ public class agregarVoluntarios extends AppCompatActivity {
     FloatingActionButton btnregresar;
     ImageView imgfoto;
     VideoView vdidep;
-    String urldefoto="", urldevideo="",idvoluntarios, accion = "nuevo", rev,_id;
+    String urldefoto="", urldevideo="",idpostulado, accion = "nuevo", rev,_id;
     Button btnagregar, btncargarvideo;
     TextView temp;
     String lognombre,logdui,logtelefono,logmail,logpadss;
@@ -82,22 +82,22 @@ public class agregarVoluntarios extends AppCompatActivity {
             temp = findViewById(R.id.txtdui);
             String dui = temp.getText().toString();
 
-            temp = findViewById(R.id.txtdonar);
-            String donar = temp.getText().toString();
+            temp = findViewById(R.id.txtpropuesta);
+            String propuesta = temp.getText().toString();
 
+            temp = findViewById(R.id.txotro);
+            String otro = temp.getText().toString();
 
             JSONObject datoss = new JSONObject();
-            if(accion.equals("modificar") && idvoluntarios.length()>0 && rev.length()>0 ){
-                datoss.put("_id",_id);
+            if(accion.equals("modificar") && idpostulado.length()>0 && rev.length()>0 ){
+                datoss.put("_id",idpostulado);
                 datoss.put("_rev",rev);
-            }else if (accion.equals("nuevo")){
-                datoss.put("_id",dui);
             }
-
 
             datoss.put("nombre",nombre);
             datoss.put("dui",dui);
-            datoss.put("donar",donar);
+            datoss.put("propuesta",propuesta);
+            datoss.put("otro",otro);
             datoss.put("urlfoto",urldefoto);
             datoss.put("urltriler",urldevideo);
 
@@ -127,7 +127,7 @@ public class agregarVoluntarios extends AppCompatActivity {
 
             if(accion.equals("modificar")){
                 JSONObject datos = new JSONObject(recibirparametros.getString("datos")).getJSONObject("value");
-                idvoluntarios = datos.getString("_id");
+                idpostulado = datos.getString("_id");
                 _id = datos.getString("_id");
 
                 rev = datos.getString("_rev");
@@ -138,8 +138,8 @@ public class agregarVoluntarios extends AppCompatActivity {
                 temp = findViewById(R.id.txtdui);
                 temp.setText(datos.getString("dui"));
 
-                temp = findViewById(R.id.txtdonar);
-                temp.setText(datos.getString("donar"));
+                temp = findViewById(R.id.txtpropuesta);
+                temp.setText(datos.getString("propuesta"));
 
 
                 urldefoto =  datos.getString("urlfoto");

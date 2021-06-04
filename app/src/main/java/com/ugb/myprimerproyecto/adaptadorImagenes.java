@@ -43,7 +43,7 @@ public class adaptadorImagenes extends BaseAdapter {
         ImageView img = encuadre.findViewById(R.id.miniatura);
         try{
             voluntarios = datosvoluntariosArrayList.get(position);
-            temp.setText(voluntarios.getNombrepostulado());
+            temp.setText(voluntarios.getNombrevolunt());
 
           String urldefoto = voluntarios.getUrlfoto();
 
