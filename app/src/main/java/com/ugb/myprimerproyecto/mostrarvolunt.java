@@ -29,12 +29,12 @@ public class mostrarvolunt extends AppCompatActivity {
     FloatingActionButton btnadd;
     DB miconexion;
     ListView ltspostulados;
-    Cursor datospostuladoscursor = null;
+    Cursor datoscursor = null;
     ArrayList<volunt> voluntArrayList =new ArrayList<volunt>();
     ArrayList<volunt> voluntArrayListCopy =new ArrayList<volunt>();
-    volunt mispostulados;
-    JSONArray jsonArrayDatospostulados;
-    JSONObject jsonObjectDatospostulados;
+    volunt misvoluntarios;
+    JSONArray jsonArrayDatosvol;
+    JSONObject jsonObjectDatosvolunt;
     utilidades u;
     String lognombre,logdui,logtelefono,logmail,logpadss;
     detectarInternet di;
@@ -97,8 +97,8 @@ public class mostrarvolunt extends AppCompatActivity {
         try {
             ConexionconServer conexionconServer = new ConexionconServer();
             String resp = conexionconServer.execute(u.urlmostrarvoluntarios, "GET").get();
-            jsonObjectDatospostulados=new JSONObject(resp);
-            jsonArrayDatospostulados = jsonObjectDatospostulados.getJSONArray("rows");
+            jsonObjectDatosvolunt=new JSONObject(resp);
+            jsonArrayDatosvol = jsonObjectDatosvolunt.getJSONArray("rows");
             mostrarDatos();
         }catch (Exception ex){
             mensajes(ex.getMessage());
@@ -112,10 +112,10 @@ public class mostrarvolunt extends AppCompatActivity {
             voluntArrayListCopy.clear();
             JSONObject jsonObject;
             if(di.hayConexionInternet()) {
-                if(jsonArrayDatospostulados.length()>0) {
-                    for (int i = 0; i < jsonArrayDatospostulados.length(); i++) {
-                        jsonObject = jsonArrayDatospostulados.getJSONObject(i).getJSONObject("value");
-                        mispostulados = new volunt(
+                if(jsonArrayDatosvol.length()>0) {
+                    for (int i = 0; i < jsonArrayDatosvol.length(); i++) {
+                        jsonObject = jsonArrayDatosvol.getJSONObject(i).getJSONObject("value");
+                        misvoluntarios = new volunt(
                                 jsonObject.getString("_id"),
                                 jsonObject.getString("_rev"),
                                 jsonObject.getString("nombre"),
@@ -125,7 +125,7 @@ public class mostrarvolunt extends AppCompatActivity {
                                 jsonObject.getString("urlfoto"),
                                 jsonObject.getString("urltriler")
                         );
-                        voluntArrayList.add(mispostulados);
+                        voluntArrayList.add(misvoluntarios);
                     }}
             }
 
@@ -151,7 +151,7 @@ public class mostrarvolunt extends AppCompatActivity {
             if(di.hayConexionInternet()) {
                 AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo) menuInfo;
                 position = adapterContextMenuInfo.position;
-                menu.setHeaderTitle(jsonArrayDatospostulados.getJSONObject(position).getJSONObject("value").getString("nombre"));
+                menu.setHeaderTitle(jsonArrayDatosvol.getJSONObject(position).getJSONObject("value").getString("nombre"));
             }
         }catch (Exception e){
             mensajes(e.getMessage());
@@ -184,8 +184,8 @@ public class mostrarvolunt extends AppCompatActivity {
             AlertDialog.Builder confirmacion = new AlertDialog.Builder(mostrarvolunt.this);
             confirmacion.setTitle("¿Seguro quiere eliminar?");
 
-                jsonObjectDatospostulados = jsonArrayDatospostulados.getJSONObject(position).getJSONObject("value");
-                confirmacion.setMessage(jsonObjectDatospostulados.getString("dui"));
+                jsonObjectDatosvolunt = jsonArrayDatosvol.getJSONObject(position).getJSONObject("value");
+                confirmacion.setMessage(jsonObjectDatosvolunt.getString("dui"));
 
             confirmacion.setPositiveButton("Si", (dialog, which) -> {
 
@@ -193,13 +193,13 @@ public class mostrarvolunt extends AppCompatActivity {
                     if(di.hayConexionInternet()){
                         ConexionconServer objElimina = new ConexionconServer();
                         String resp =  objElimina.execute(u.urlagregarVoluntarios +
-                                jsonObjectDatospostulados.getString("_id")+ "?rev="+
-                                jsonObjectDatospostulados.getString("_rev"), "DELETE"
+                                jsonObjectDatosvolunt.getString("_id")+ "?rev="+
+                                jsonObjectDatosvolunt.getString("_rev"), "DELETE"
                         ).get();
 
                         JSONObject jsonRespEliminar = new JSONObject(resp);
                         if(jsonRespEliminar.getBoolean("ok")){
-                            jsonArrayDatospostulados.remove(position);
+                            jsonArrayDatosvol.remove(position);
                             mostrarDatos();
                         }
                     }
@@ -229,13 +229,13 @@ public class mostrarvolunt extends AppCompatActivity {
         parametros.putString("telefono", logtelefono);
         parametros.putString("mail", logmail);
         parametros.putString("padss", logpadss);
-        jsonObjectDatospostulados = new JSONObject();
+        jsonObjectDatosvolunt = new JSONObject();
         JSONObject jsonValueObject = new JSONObject();
         if(di.hayConexionInternet())
         {
             try {
-                if(jsonArrayDatospostulados.length()>0){
-                    parametros.putString("datos", jsonArrayDatospostulados.getJSONObject(position).toString() );
+                if(jsonArrayDatosvol.length()>0){
+                    parametros.putString("datos", jsonArrayDatosvol.getJSONObject(position).toString() );
                 }
             }catch (Exception e){
                 mensajes(e.getMessage());

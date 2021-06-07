@@ -13,22 +13,22 @@ import java.util.ArrayList;
 
 public class adaptadorImagenes extends BaseAdapter {
     Context context;
-    ArrayList<volunt> datospostuladosArrayList;
+    ArrayList<volunt> datospovoluntariosArrayList;
     LayoutInflater layoutInflater;
     volunt mispo;
 
     public adaptadorImagenes(Context context, ArrayList<volunt> datospostuladosArrayList) {
         this.context = context;
-        this.datospostuladosArrayList = datospostuladosArrayList;
+        this.datospovoluntariosArrayList = datospostuladosArrayList;
     }
 
     @Override
     public int getCount() {
-        return datospostuladosArrayList.size();
+        return datospovoluntariosArrayList.size();
     }
     @Override
     public Object getItem(int position) {
-        return datospostuladosArrayList.get(position);
+        return datospovoluntariosArrayList.get(position);
     }
     @Override
     public long getItemId(int position) {
@@ -42,7 +42,7 @@ public class adaptadorImagenes extends BaseAdapter {
         TextView temp = encuadre.findViewById(R.id.lbltitulo);
         ImageView img = encuadre.findViewById(R.id.miniatura);
         try{
-            mispo = datospostuladosArrayList.get(position);
+            mispo = datospovoluntariosArrayList.get(position);
             temp.setText(mispo.getNombrepos());
 
             temp = encuadre.findViewById(R.id.lblotros);

@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
          JSONObject jsonObject;
          if(detectarInterneti.hayConexionInternet()) {
              if(jsonArrayDatosvo.length()>0) {
-                 mensajes("Espere un momento estoy buscando su usuario");
+                 mensajes("Espere un momento estoy buscando");
                  for (int i = 0; i < jsonArrayDatosvo.length(); i++) {
 
                      jsonObject = jsonArrayDatosvo.getJSONObject(i).getJSONObject("value");

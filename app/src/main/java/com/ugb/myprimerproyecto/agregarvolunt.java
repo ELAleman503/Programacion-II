@@ -79,6 +79,8 @@ public class agregarvolunt extends AppCompatActivity {
 
     }
 
+    //Agregar Donantes
+
     private void agregar() {
         try {
             temp = findViewById(R.id.txtnombre);
@@ -122,7 +124,7 @@ public class agregarvolunt extends AppCompatActivity {
         }
     }
 
-
+    //Mostrar datos guardados CouchDB
     private void mostrardatos() {
         try {
             Bundle recibirparametros = getIntent().getExtras();
