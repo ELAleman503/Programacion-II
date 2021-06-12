@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/txtuss"
+        style="@android:style/Widget.DeviceDefault.Light.AutoCompleteTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView8"
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="15dp"
+        android:hint="DUI"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/txtpass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtuss"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:password="true"
+        android:hint="Contraseña" />
+
+
+    <Button
+        android:id="@+id/btniniciar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtpass"
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="15dp"
+        android:text="Iniciar"
+        app:backgroundTint="@color/black" />
+
+    <Button
+        android:id="@+id/btnregistrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btniniciar"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="15dp"
+        android:text="Registro"
+        app:backgroundTint="@color/black" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="191dp"
+        android:layout_height="210dp"
+
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginTop="35dp"
+        app:srcCompat="@drawable/ic_login" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="166dp"
+        android:layout_marginEnd="176dp"
+        android:rotationX="4"
+        android:text="Bienvenido" />
+
+
+</RelativeLayout>

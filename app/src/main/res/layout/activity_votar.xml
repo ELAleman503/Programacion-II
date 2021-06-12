@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".votar">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <ImageButton
+                android:id="@+id/imgfoto"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp" />
+
+
+            <VideoView
+                android:id="@+id/vdipe"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/txtnombr"
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgfoto"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:hint="Nombre de postulado" />
+
+            <TextView
+                android:id="@+id/txtNombre"
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtnombr"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:hint="Nombre" />
+
+
+            <TextView
+                android:id="@+id/txtpropuest"
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtNombre"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:hint="Su propuesta" />
+
+            <TextView
+                android:id="@+id/txtPropuesta"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtpropuest"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:hint="Propuesta" />
+
+            <TextView
+                android:id="@+id/txtotro"
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtPropuesta"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:hint="Otros datos" />
+
+            <TextView
+                android:id="@+id/txtOtros"
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtotro"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:hint="otros" />
+
+
+            <Button
+                android:id="@+id/btnvotar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtotro"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:text="Apoyar" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnregresar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="25dp"
+        android:layout_gravity="right"
+        android:src="@drawable/abc_vector_test" />
+
+</RelativeLayout>
