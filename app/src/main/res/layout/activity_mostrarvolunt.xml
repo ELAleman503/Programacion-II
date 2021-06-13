@@ -34,7 +34,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnagregar"
-        android:src="@android:drawable/ic_menu_add"
+        android:src="@drawable/ic_iconfinder_edit_01_1976055"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="20dp"
