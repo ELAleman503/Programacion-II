@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "156352741585",
+    "firebase_url": "https://donantesv-ugb-default-rtdb.firebaseio.com",
+    "project_id": "donantesv-ugb",
+    "storage_bucket": "donantesv-ugb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156352741585:android:2d518edbebaeff613845f0",
+        "android_client_info": {
+          "package_name": "com.ugb.myprimerproyecto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "156352741585-mstfonlc6ql9gor1kcqseeilbdtfb5tp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfPG-eQgidW5196zJpSaFn7DFONI-_ru4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "156352741585-mstfonlc6ql9gor1kcqseeilbdtfb5tp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
