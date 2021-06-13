@@ -9,7 +9,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_iconodedonacionsv_6602712"
         android:label="DonanteSv"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"

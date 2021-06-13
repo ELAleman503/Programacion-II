@@ -6,18 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+    <ImageView
+        android:id="@+id/imgLogin"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/ic_login" />
+
+    <TextView
+        android:id="@+id/txtMensaje"
+        android:layout_width="114dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgLogin"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="152dp"
+        android:layout_marginLeft="152dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="145dp"
+        android:layout_marginRight="15dp"
+        android:text="Bienvenido"
+        android:textSize="20sp" />
+
     <EditText
         android:id="@+id/txtuss"
         style="@android:style/Widget.DeviceDefault.Light.AutoCompleteTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView8"
+        android:layout_below="@+id/imgLogin"
         android:layout_gravity="center"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="15dp"
-        android:hint="DUI"
-        android:inputType="number" />
+        android:hint="Usuario" />
 
     <EditText
         android:id="@+id/txtpass"
@@ -34,50 +60,32 @@
 
     <Button
         android:id="@+id/btniniciar"
-        android:layout_width="match_parent"
+        android:layout_width="124dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtpass"
+        android:layout_alignParentEnd="true"
         android:layout_gravity="center"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="143dp"
         android:layout_marginRight="15dp"
         android:text="Iniciar"
-        app:backgroundTint="@color/black" />
+         />
 
     <Button
         android:id="@+id/btnregistrar"
-        android:layout_width="match_parent"
+        android:layout_width="122dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/btniniciar"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="33dp"
         android:layout_marginRight="15dp"
         android:text="Registro"
-        app:backgroundTint="@color/black" />
+         />
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="191dp"
-        android:layout_height="210dp"
 
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-
-        android:layout_marginTop="35dp"
-        app:srcCompat="@drawable/ic_login" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="166dp"
-        android:layout_marginEnd="176dp"
-        android:rotationX="4"
-        android:text="Bienvenido" />
 
 
 </RelativeLayout>
