@@ -16,7 +16,7 @@ import java.net.URL;
 
 public class enviarusuarios extends AsyncTask<String, String, String> {
     Context context;
-    utilidades uc = new utilidades();
+    utilidades util = new utilidades();
     String resp;
 
     public enviarusuarios(Context context) {
@@ -36,7 +36,7 @@ public class enviarusuarios extends AsyncTask<String, String, String> {
         BufferedReader bufferedReader;
 
         try{
-            URL url = new URL(uc.urlagregardatos_US);
+            URL url = new URL(util.urlagregardatos_US);
             urlConnection = (HttpURLConnection)url.openConnection();
             urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);

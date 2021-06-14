@@ -75,7 +75,7 @@ public class registrorvolunt extends AppCompatActivity {
                 String resp = guardarpelis.execute(datosss.toString()).get();
             }
 
-            mensajes("Registro guardado con exito.");
+            mensajes("Registro guardado");
             regresarmainactivity();
         }catch (Exception w){
             mensajes(w.getMessage());

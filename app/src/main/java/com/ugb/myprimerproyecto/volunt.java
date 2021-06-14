@@ -37,7 +37,7 @@ public class volunt {
         this.rev = rev;
     }
 
-    public String getNombrepostulado() {
+    public String getNombrevolunt() {
         return nombrepo;
     }
 
@@ -57,7 +57,7 @@ public class volunt {
         return pdonar;
     }
 
-    public void setPropuesta(String propuesta) {
+    public void setPdonar(String pdonar) {
         this.pdonar = pdonar;
     }
 
