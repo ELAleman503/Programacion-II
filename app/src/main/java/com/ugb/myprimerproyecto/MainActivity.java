@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements BiometricCallback
     Button login, registro;
     TextView temp;
     DB miconexion;
-    utilidades u;
+    utilidades ut;
     JSONArray jsonArrayDatosvo;
     JSONObject jsonObjectDatosvo;
     Cursor datosusuariocursor = null;
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements BiometricCallback
      try {
 
          ConexionconServer conexionconServer = new ConexionconServer();
-         String resp = conexionconServer.execute(u.urlobteniendodatos_US, "GET").get();
+         String resp = conexionconServer.execute(ut.urlobteniendodatos_US, "GET").get();
          jsonObjectDatosvo=new JSONObject(resp);
          jsonArrayDatosvo = jsonObjectDatosvo.getJSONArray("rows");
 

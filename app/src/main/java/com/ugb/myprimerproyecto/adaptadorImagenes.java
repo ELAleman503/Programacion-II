@@ -43,7 +43,7 @@ public class adaptadorImagenes extends BaseAdapter {
         ImageView img = encuadre.findViewById(R.id.miniatura);
         try{
             mispos = datospovoluntariosArrayList.get(position);
-            temp.setText(mispos.getNombrepostulado());
+            temp.setText(mispos.getNombrevolunt());
 
             temp = encuadre.findViewById(R.id.lblotros);
             temp.setText(mispos.getOtros());

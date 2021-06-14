@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,13 +29,13 @@ public class mostrarvolunt extends AppCompatActivity {
 
     TextView nombrel, duil;
     FloatingActionButton btnadd;
-    ListView ltspostulados;
-    Cursor datospostuladoscursor = null;
+    ListView ltsvolunt;
+    Cursor datosvcursor = null;
     ArrayList<volunt> voluntArrayList =new ArrayList<volunt>();
     ArrayList<volunt> voluntArrayListCopy =new ArrayList<volunt>();
     volunt mispo;
-    JSONArray jsonArrayDatospostulados;
-    JSONObject jsonObjectDatospostulados;
+    JSONArray jsonArrayDatosvolunt;
+    JSONObject jsonObjectDatosvolunt;
     utilidades u;
     String lognombre,logdui,logtelefono,logmail,logpadss;
     detectarInternet di;
@@ -55,9 +57,7 @@ public class mostrarvolunt extends AppCompatActivity {
         logmail = recibirparametros.getString("mail");
         logpadss = recibirparametros.getString("padss");
 
-
         nombrel.setText(lognombre);
-        duil.setText(logdui);
 
         di = new detectarInternet(getApplicationContext());
         btnadd = findViewById(R.id.btnagregar);
@@ -66,8 +66,46 @@ public class mostrarvolunt extends AppCompatActivity {
         });
 
         obtenerDatos();
-         //Buscar();
+         Buscar();
     }
+
+    private void Buscar() {
+        TextView tempVal = findViewById(R.id.txtbuscar);
+        tempVal.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                voluntArrayList.clear();
+                if (tempVal.getText().toString().length()<1){
+                    voluntArrayList.addAll(voluntArrayListCopy);
+                } else{
+                    for (volunt PB : voluntArrayListCopy){
+                        String nombrevolunt = PB.getNombrevolunt();
+                        String nombrevolun = PB.getPdonar();
+                        String Otros = PB.getOtros();
+                        String Dui = PB.getDuipo();
+                        String buscando = tempVal.getText().toString().trim().toLowerCase();
+                        if(nombrevolunt.toLowerCase().contains(buscando) ||
+                                nombrevolun.toLowerCase().contains(buscando) ||
+                                Otros.toLowerCase().contains(buscando) ||
+                                Dui.toLowerCase().contains(buscando) ){
+                            voluntArrayList.add(PB);
+                        }
+                    }
+                }
+                adaptadorImagenes adaptadorImagenes = new adaptadorImagenes(getApplicationContext(), voluntArrayList);
+                ltsvolunt.setAdapter(adaptadorImagenes);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });}
 
     private void Agregar(String accion) {
         Bundle parametros = new Bundle();
@@ -96,8 +134,8 @@ public class mostrarvolunt extends AppCompatActivity {
         try {
             ConexionconServer conexionconServer = new ConexionconServer();
             String resp = conexionconServer.execute(u.urlmostrarvoluntarios, "GET").get();
-            jsonObjectDatospostulados=new JSONObject(resp);
-            jsonArrayDatospostulados = jsonObjectDatospostulados.getJSONArray("rows");
+            jsonObjectDatosvolunt=new JSONObject(resp);
+            jsonArrayDatosvolunt = jsonObjectDatosvolunt.getJSONArray("rows");
             mostrarDatos();
         }catch (Exception ex){
             mensajes(ex.getMessage());
@@ -106,14 +144,14 @@ public class mostrarvolunt extends AppCompatActivity {
 
     private void mostrarDatos() {
         try{
-            ltspostulados = findViewById(R.id.list);
+            ltsvolunt = findViewById(R.id.list);
             voluntArrayList.clear();
             voluntArrayListCopy.clear();
             JSONObject jsonObject;
             if(di.hayConexionInternet()) {
-                if(jsonArrayDatospostulados.length()>0) {
-                    for (int i = 0; i < jsonArrayDatospostulados.length(); i++) {
-                        jsonObject = jsonArrayDatospostulados.getJSONObject(i).getJSONObject("value");
+                if(jsonArrayDatosvolunt.length()>0) {
+                    for (int i = 0; i < jsonArrayDatosvolunt.length(); i++) {
+                        jsonObject = jsonArrayDatosvolunt.getJSONObject(i).getJSONObject("value");
                         mispo = new volunt(
                                 jsonObject.getString("_id"),
                                 jsonObject.getString("_rev"),
@@ -129,8 +167,8 @@ public class mostrarvolunt extends AppCompatActivity {
             }
 
             adaptadorImagenes adaptadorImagenes = new adaptadorImagenes(getApplicationContext(), voluntArrayList);
-            ltspostulados.setAdapter(adaptadorImagenes);
-            registerForContextMenu(ltspostulados);
+            ltsvolunt.setAdapter(adaptadorImagenes);
+            registerForContextMenu(ltsvolunt);
             voluntArrayListCopy.addAll(voluntArrayList);
 
         }catch (Exception e){
@@ -150,7 +188,7 @@ public class mostrarvolunt extends AppCompatActivity {
             if(di.hayConexionInternet()) {
                 AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo) menuInfo;
                 position = adapterContextMenuInfo.position;
-                menu.setHeaderTitle(jsonArrayDatospostulados.getJSONObject(position).getJSONObject("value").getString("nombre"));
+                menu.setHeaderTitle(jsonArrayDatosvolunt.getJSONObject(position).getJSONObject("value").getString("nombre"));
             }
         }catch (Exception e){
             mensajes(e.getMessage());
@@ -170,6 +208,8 @@ public class mostrarvolunt extends AppCompatActivity {
                 case R.id.mxnEliminar:
                     Eliminar();
                     break;
+
+
             }
         }catch (Exception ex){
             mensajes(ex.getMessage());
@@ -180,10 +220,10 @@ public class mostrarvolunt extends AppCompatActivity {
     private void Eliminar(){
         try {
             AlertDialog.Builder confirmacion = new AlertDialog.Builder(mostrarvolunt.this);
-            confirmacion.setTitle("Esta seguro de eliminar?");
+            confirmacion.setTitle("¿Quieres Eliminar?");
 
-                jsonObjectDatospostulados = jsonArrayDatospostulados.getJSONObject(position).getJSONObject("value");
-                confirmacion.setMessage(jsonObjectDatospostulados.getString("nombre"));
+                jsonObjectDatosvolunt = jsonArrayDatosvolunt.getJSONObject(position).getJSONObject("value");
+                confirmacion.setMessage(jsonObjectDatosvolunt.getString("nombre"));
 
             confirmacion.setPositiveButton("Si", (dialog, which) -> {
 
@@ -191,13 +231,13 @@ public class mostrarvolunt extends AppCompatActivity {
                     if(di.hayConexionInternet()){
                         ConexionconServer objElimina = new ConexionconServer();
                         String resp =  objElimina.execute(u.urlagregarVoluntarios +
-                                jsonObjectDatospostulados.getString("_id")+ "?rev="+
-                                jsonObjectDatospostulados.getString("_rev"), "DELETE"
+                                jsonObjectDatosvolunt.getString("_id")+ "?rev="+
+                                jsonObjectDatosvolunt.getString("_rev"), "DELETE"
                         ).get();
 
                         JSONObject jsonRespEliminar = new JSONObject(resp);
                         if(jsonRespEliminar.getBoolean("ok")){
-                            jsonArrayDatospostulados.remove(position);
+                            jsonArrayDatosvolunt.remove(position);
                             mostrarDatos();
                         }
                     }
@@ -209,7 +249,7 @@ public class mostrarvolunt extends AppCompatActivity {
                 }
             });
             confirmacion.setNegativeButton("No", (dialog, which) -> {
-                mensajes("Eliminacion detendia");
+                mensajes("Se detuvo");
                 dialog.dismiss();
             });
             confirmacion.create().show();
@@ -227,13 +267,13 @@ public class mostrarvolunt extends AppCompatActivity {
         parametros.putString("telefono", logtelefono);
         parametros.putString("mail", logmail);
         parametros.putString("padss", logpadss);
-        jsonObjectDatospostulados = new JSONObject();
+        jsonObjectDatosvolunt = new JSONObject();
         JSONObject jsonValueObject = new JSONObject();
         if(di.hayConexionInternet())
         {
             try {
-                if(jsonArrayDatospostulados.length()>0){
-                    parametros.putString("datos", jsonArrayDatospostulados.getJSONObject(position).toString() );
+                if(jsonArrayDatosvolunt.length()>0){
+                    parametros.putString("datos", jsonArrayDatosvolunt.getJSONObject(position).toString() );
                 }
             }catch (Exception e){
                 mensajes(e.getMessage());
@@ -244,30 +284,7 @@ public class mostrarvolunt extends AppCompatActivity {
         startActivity(i);
     }
 
-    private void votar(String accion){
-        Bundle parametros = new Bundle();
-        parametros.putString("accion", accion);
-        parametros.putString("nombre", lognombre);
-        parametros.putString("duii", logdui);
-        parametros.putString("telefono", logtelefono);
-        parametros.putString("mail", logmail);
-        parametros.putString("padss", logpadss);
-        jsonObjectDatospostulados = new JSONObject();
-        JSONObject jsonValueObject = new JSONObject();
-        if(di.hayConexionInternet())
-        {
-            try {
-                if(jsonArrayDatospostulados.length()>0){
-                    parametros.putString("datos", jsonArrayDatospostulados.getJSONObject(position).toString() );
-                }
-            }catch (Exception e){
-                mensajes(e.getMessage());
-            }
-        }
-        //Intent i = new Intent(getApplicationContext(), votar.class);
-        //i.putExtras(parametros);
-        //startActivity(i);
-    }
+
 
 
 }
